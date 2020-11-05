@@ -1,0 +1,8 @@
+/*#################### GALLERY #########################*/
+.section-gallery {
+  display: flex;
+  height: calc(100vh - 70px);
+}
+
+@import "gallery/gallery-menu";
+@import "gallery/gallery-page";

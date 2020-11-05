@@ -1,0 +1,36 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+*::-webkit-scrollbar {
+  width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: $main-background-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $color-border-main;
+  border-radius: 2px;
+}
+body {
+  background-color: $main-background-color;
+  font-family: "Piazzolla";
+  color: $main-text-color;
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+  color: $main-text-color;
+  transition: color 250ms linear;
+
+  &:hover,
+  &:focus {
+    color: $color-accent;
+  }
+}

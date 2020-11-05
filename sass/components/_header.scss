@@ -1,0 +1,80 @@
+/*#################### HEADER #########################*/
+.section-header {
+  @include header-footer(0, initial);
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  @media screen and (min-width: $breakpoint-mobile) {
+    justify-content: space-around;
+  }
+  align-items: stretch;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.logo {
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: 20px;
+}
+.nav-login-list {
+  display: none;
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: flex;
+  }
+  width: 80%;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+.nav-list-link {
+  position: relative;
+  display: block;
+  padding: 10px 0px;
+  font-size: 16px;
+  font-weight: 400;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 4px;
+    background-color: $color-accent;
+    opacity: 0;
+    transition: opacity 250ms linear;
+  }
+
+  &:hover::after,
+  &:focus::after {
+    opacity: 1;
+  }
+}
+.button-login-register {
+  display: block;
+  @include border-shadow();  
+  font-size: 14px;
+  background-color: transparent;
+  padding: 3px 10px;
+  color: $main-text-color;
+  transition: color 250ms linear,
+              border-color 250ms linear;
+
+  &:hover,
+  &:focus {
+    color: $color-accent;
+    border-color: $color-accent;
+  }
+}
+.header-menu-button {
+  display: block;
+  border: none;
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: none;
+  }
+  background-color: transparent;
+
+  & svg {fill: $main-text-color}
+}

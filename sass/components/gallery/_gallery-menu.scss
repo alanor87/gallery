@@ -1,0 +1,74 @@
+.gallery-menu {
+  display: none;
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: block;
+    position: relative;
+    flex-shrink: 0;
+    overflow-y: auto;
+    margin-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  &-list {
+    list-style: none;
+  }
+
+  &-item {
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  &-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    display: block;
+    left: 50%;
+    height: 30px;
+    width: 1px;
+    background-color: $main-text-color;
+    z-index: -1;
+  }
+
+  &-thumb {
+    @include border-shadow();
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    transition: border-color 250ms linear, transform 250ms linear;
+  }
+
+  &-thumb:hover {
+    border-color: $color-accent;
+    transform: scale(1.1);
+  }
+}
+
+.gallery-menu-slide-button {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  transform: translateY(-70%);
+  background-color: $color-border-main;
+  border: none;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  transition: background-color 250ms linear, transform 250ms linear;
+  z-index: 1;
+
+  & svg {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    fill: $main-text-color;
+  }
+
+  &:hover {
+    background-color: rgba(77, 81, 85, 0.9);
+    transform: translateY(-60%);
+  }
+}

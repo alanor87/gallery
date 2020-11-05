@@ -1,0 +1,15 @@
+.section-footer {
+    @include header-footer(initial, 0);
+}
+.footer-list {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: auto;
+    list-style: none;
+
+    &-link {
+        display: block;
+        padding: 10px 0;
+    }
+}
