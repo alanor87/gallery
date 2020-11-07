@@ -12,18 +12,18 @@
     <header class="section-header">
       <nav class="nav">
         <a href="" class="logo"><h1>Photo gallery</h1></a>
-        <ul class="nav-login-list">
+        <ul class="nav-login-list" data-menu>
           <li class="nav-list-item"><a href="" class="nav-list-link">Link 1</a></li>
           <li class="nav-list-item"><a href="" class="nav-list-link">Link 2</a></li>
           <li class="nav-list-item"><a href="" class="nav-list-link">Link 3</a></li>
-          <li class="nav-list-item"><a href="" class="nav-list-link">Link 4</a></li>
           <li>
-            <button type="button" class="button-login-register">Authorisation</button>
+            <button type="button" class="button-login-register" data-modal-open>Authorisation</button>
           </li>
         </ul>
-        <button type="button" class="header-menu-button">
-          <svg  width="40px" height="40px">
-            <use href="./img/symbol-defs.svg#menu-icon"></use>
+        <button type="button" class="header-menu-button" data-menu-button>
+          <svg width="40px" height="40px">
+            <use href="./img/symbol-defs.svg#menu-icon" class="menu-icon"></use>
+            <use href="./img/symbol-defs.svg#menu-close" class="menu-close"></use>
           </svg>
         </button>
       </nav>
@@ -111,5 +111,30 @@
         <li class="footer-list-item"><a class="footer-list-link" href="">Link 3</a></li>
       </ul>
     </footer>
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal-wrapper">
+        <div class="modal-auth-form">
+          <button type="button" class="modal-close-btn" data-modal-close>
+            <svg width="30px" height="30px">
+              <use href="./img/symbol-defs.svg#menu-close" ></use>
+            </svg>
+          </button>
+          <h2>Login</h2>
+          <form action="#" method="GET">
+            <label class="label-authorisation">
+              Login
+              <input type="text" name="login">
+            </label>
+            <label class="label-authorisation">
+              Password
+              <input type="password" name="password">
+            </label>
+            <button type="submit" class="modal-auth-form-button">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
+  <script src="./js/menu.js">Login</script>
+  <script src="./js/modal.js">Login</script>
 </html>

@@ -1,5 +1,6 @@
 /*#################### HEADER #########################*/
 .section-header {
+  position: relative;
   @include header-footer(0, initial);
 }
 .nav {
@@ -18,14 +19,38 @@
   font-size: 20px;
 }
 .nav-login-list {
-  display: none;
-  @media screen and (min-width: $breakpoint-mobile) {
-    display: flex;
-  }
-  width: 80%;
-  justify-content: space-around;
-  align-items: center;
+  display: flex;
   list-style: none;
+  align-items: center;
+  @media screen and (max-width: $breakpoint-mobile - 1px) {
+    display: none;
+    &.is-open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: $main-background-color;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      box-shadow: 0px 7px 6px -5px black;
+      z-index: 10;
+    }
+  }
+  @media screen and (min-width: $breakpoint-mobile) {
+    position: static;
+    width: 80%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+.nav-list-item {
+  @media screen and (min-width: 0) and (max-width: $breakpoint-mobile - 1px) {
+    margin-bottom: 10px;
+  }
 }
 .nav-list-link {
   position: relative;
@@ -54,13 +79,12 @@
 }
 .button-login-register {
   display: block;
-  @include border-shadow();  
+  @include border-shadow();
   font-size: 14px;
   background-color: transparent;
   padding: 3px 10px;
   color: $main-text-color;
-  transition: color 250ms linear,
-              border-color 250ms linear;
+  transition: color 250ms linear, border-color 250ms linear;
 
   &:hover,
   &:focus {
@@ -76,5 +100,16 @@
   }
   background-color: transparent;
 
-  & svg {fill: $main-text-color}
+  & svg {
+    fill: $main-text-color;
+  }
+}
+.header-menu-button .menu-close {
+  display: none;
+}
+.header-menu-button.is-open .menu-close {
+  display: block;
+}
+.header-menu-button.is-open .menu-icon {
+  display: none;
 }
