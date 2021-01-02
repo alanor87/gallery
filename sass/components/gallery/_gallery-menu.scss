@@ -6,14 +6,12 @@
     flex-shrink: 0;
     overflow-y: auto;
     margin-right: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 20px 15px;
   }
 
   &-list {
     list-style: none;
+    padding: 15px;
   }
 
   &-item {
@@ -34,6 +32,7 @@
 
   &-thumb {
     @include border-shadow();
+
     margin: auto;
     width: 100px;
     height: 100px;
@@ -46,29 +45,22 @@
     transform: scale(1.1);
   }
 }
-
-.gallery-menu-slide-button {
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  transform: translateY(-70%);
+.menu-item-label {
+  display: block;
+  padding: 5px;
+  margin-bottom: 10px;
   background-color: $color-border-main;
-  border: none;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  transition: background-color 250ms linear, transform 250ms linear;
-  z-index: 1;
+}
+.menu-item-checkbox {
+  visibility: hidden;
+}
+.menu-item-wrap {
+  height: 0%;
+  transform-origin: top;
+  overflow: hidden;
+  transition: height 250ms linear;
 
-  & svg {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    fill: $main-text-color;
-  }
-
-  &:hover {
-    background-color: rgba(77, 81, 85, 0.9);
-    transform: translateY(-60%);
+  .menu-item-checkbox:checked + & {
+    height: 100%;
   }
 }

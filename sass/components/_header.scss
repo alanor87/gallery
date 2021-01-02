@@ -13,6 +13,27 @@
   margin-left: 25px;
   margin-right: 25px;
 }
+.slide-button {
+  @include border-shadow;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $main-text-color;
+  border-radius: 50%;
+  transition: color 250ms linear, border-color 250ms linear;
+  z-index: 10;
+  &:hover,
+  &:focus {
+    color: $color-accent;
+    border-color: $color-accent;
+    outline: none;
+  }
+  & svg {
+    fill: currentColor;
+  }
+}
 .logo {
   white-space: nowrap;
   font-weight: 700;
