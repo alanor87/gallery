@@ -52,12 +52,10 @@
   top: 0;
   display: flex;
   justify-content: center;
-  width: 100%;
   transform: translateY(-70%);
   background-color: $color-border-main;
   border: none;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 50%;
   transition: background-color 250ms linear, transform 250ms linear;
   z-index: 1;
 
@@ -69,6 +67,5 @@
 
   &:hover {
     background-color: rgba(77, 81, 85, 0.9);
-    transform: translateY(-60%);
   }
 }
