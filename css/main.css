@@ -229,7 +229,6 @@ a:hover, a:focus {
 @media screen and (min-width: 600px) {
   .gallery-menu {
     display: block;
-    position: relative;
     flex-shrink: 0;
     overflow-y: auto;
     margin-right: 10px;

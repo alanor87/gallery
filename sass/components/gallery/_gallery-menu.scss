@@ -2,7 +2,6 @@
   display: none;
   @media screen and (min-width: $breakpoint-mobile) {
     display: block;
-    position: relative;
     flex-shrink: 0;
     overflow-y: auto;
     margin-right: 10px;
