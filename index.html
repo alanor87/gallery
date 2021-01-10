@@ -14,10 +14,18 @@
     <link rel="stylesheet" href="./css/main.min.css" />
     <title>Document</title>
   </head>
+
   <body>
     <header class="section-header">
       <nav class="nav">
-        <a href="" class="logo"><h1>Photo gallery</h1></a>
+        <button type="button" class="slide-button">
+          <svg width="21px" height="21px">
+            <use href="./img/symbol-defs.svg#arrow-left"></use>
+          </svg>
+        </button>
+        <a href="" class="logo">
+          <h1>Photo gallery</h1>
+        </a>
         <ul class="nav-login-list" data-menu>
           <li class="nav-list-item">
             <a href="" class="nav-list-link">Link 1</a>
@@ -47,83 +55,246 @@
     </header>
     <main class="section-gallery">
       <div class="gallery-menu">
-        <button type="button" class="gallery-menu-slide-button">
-          <svg width="21px" height="21px">
-            <use href="./img/symbol-defs.svg#arrow-left"></use>
-          </svg>
-        </button>
-        <ul class="gallery-menu-list">
-          <li class="gallery-menu-item">
-            <img
-              src="https://picsum.photos/210"
-              class="gallery-menu-thumb"
-              alt=""
-            />
-          </li>
-          <li class="gallery-menu-item">
-            <img
-              src="https://picsum.photos/220"
-              class="gallery-menu-thumb"
-              alt=""
-            />
-          </li>
-          <li class="gallery-menu-item">
-            <img
-              src="https://picsum.photos/230"
-              class="gallery-menu-thumb"
-              alt=""
-            />
-          </li>
-          <li class="gallery-menu-item">
-            <img
-              src="https://picsum.photos/240"
-              class="gallery-menu-thumb"
-              alt=""
-            />
-          </li>
-          <li class="gallery-menu-item">
-            <img
-              src="https://picsum.photos/200"
-              class="gallery-menu-thumb"
-              alt=""
-            />
-          </li>
-          <li class="gallery-menu-item">
-            <img
-              src="https://picsum.photos/200"
-              class="gallery-menu-thumb"
-              alt=""
-            />
-          </li>
-          <li class="gallery-menu-item">
-            <img
-              src="https://picsum.photos/200"
-              class="gallery-menu-thumb"
-              alt=""
-            />
-          </li>
-          <li class="gallery-menu-item">
-            <img
-              src="https://picsum.photos/200"
-              class="gallery-menu-thumb"
-              alt=""
-            />
-          </li>
-          <li class="gallery-menu-item">
-            <img
-              src="https://picsum.photos/200"
-              class="gallery-menu-thumb"
-              alt=""
-            />
-          </li>
-          <li class="gallery-menu-item">
-            <img
-              src="https://picsum.photos/200"
-              class="gallery-menu-thumb"
-              alt=""
-            />
-          </li>
-        </ul>
+        <label for="block1" class="menu-item-label">Block 1</label>
+        <input
+          type="checkbox"
+          class="menu-item-checkbox is-hidden"
+          id="block1"
+        />
+        <div class="menu-item-wrap">
+          <ul class="gallery-menu-list">
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/210"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/220"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/230"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/240"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+          </ul>
+        </div>
+        <label for="block2" class="menu-item-label">Block 2</label>
+        <input
+          type="checkbox"
+          class="menu-item-checkbox is-hidden"
+          id="block2"
+        />
+        <div class="menu-item-wrap">
+          <ul class="gallery-menu-list">
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/210"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/220"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/230"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/240"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+          </ul>
+        </div>
+        <label for="block3" class="menu-item-label">Block 3</label>
+        <input
+          type="checkbox"
+          class="menu-item-checkbox is-hidden"
+          id="block3"
+        />
+        <div class="menu-item-wrap">
+          <ul class="gallery-menu-list">
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/210"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/220"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/230"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/240"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+            <li class="gallery-menu-item">
+              <img
+                src="https://picsum.photos/200"
+                class="gallery-menu-thumb"
+                alt="picture"
+              />
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="gallery-page">
         <div class="gallery-page-wrap">
@@ -236,6 +407,19 @@
         </div>
       </div>
     </main>
+    <footer class="section-footer">
+      <ul class="footer-list">
+        <li class="footer-list-item">
+          <a class="footer-list-link" href="">Link 1</a>
+        </li>
+        <li class="footer-list-item">
+          <a class="footer-list-link" href="">Link 2</a>
+        </li>
+        <li class="footer-list-item">
+          <a class="footer-list-link" href="">Link 3</a>
+        </li>
+      </ul>
+    </footer>
     <div class="backdrop is-hidden" data-modal>
       <div class="modal-wrapper">
         <div class="modal-auth-form">

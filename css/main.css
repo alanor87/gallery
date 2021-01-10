@@ -1,3 +1,11 @@
+.is-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -63,6 +71,31 @@ a:hover, a:focus {
   .nav {
     justify-content: space-around;
   }
+}
+
+.slide-button {
+  background-color: #161616;
+  border: 1px solid rgba(77, 81, 85, 0.46);
+  box-shadow: 3px 3px 5px 0px black;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #bebebe;
+  border-radius: 50%;
+  transition: color 250ms linear, border-color 250ms linear;
+  z-index: 10;
+}
+
+.slide-button:hover, .slide-button:focus {
+  color: #f07523;
+  border-color: #f07523;
+  outline: none;
+}
+
+.slide-button svg {
+  fill: currentColor;
 }
 
 .logo {
@@ -200,15 +233,13 @@ a:hover, a:focus {
     flex-shrink: 0;
     overflow-y: auto;
     margin-right: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 20px 15px;
   }
 }
 
 .gallery-menu-list {
   list-style: none;
+  padding: 15px;
 }
 
 .gallery-menu-item {
@@ -243,27 +274,26 @@ a:hover, a:focus {
   transform: scale(1.1);
 }
 
-.gallery-menu-slide-button {
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  transform: translateY(-70%);
+.menu-item-label {
+  display: block;
+  padding: 5px;
+  margin-bottom: 10px;
   background-color: rgba(77, 81, 85, 0.46);
-  border: none;
-  border-radius: 50%;
-  transition: background-color 250ms linear, transform 250ms linear;
-  z-index: 1;
 }
 
-.gallery-menu-slide-button svg {
-  margin-top: 10px;
-  margin-bottom: 5px;
-  fill: #bebebe;
+.menu-item-checkbox {
+  visibility: hidden;
 }
 
-.gallery-menu-slide-button:hover {
-  background-color: rgba(77, 81, 85, 0.9);
+.menu-item-wrap {
+  height: 0%;
+  transform-origin: top;
+  overflow: hidden;
+  transition: height 250ms linear;
+}
+
+.menu-item-checkbox:checked + .menu-item-wrap {
+  height: 100%;
 }
 
 .gallery-page {
