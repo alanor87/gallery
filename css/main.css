@@ -229,11 +229,20 @@ a:hover, a:focus {
 @media screen and (min-width: 600px) {
   .gallery-menu {
     display: block;
+    width: 180px;
     flex-shrink: 0;
     overflow-y: auto;
     margin-right: 10px;
     padding: 20px 15px;
   }
+}
+
+.gallery-menu *::-webkit-scrollbar {
+  width: 0;
+}
+
+.gallery-menu::-webkit-scrollbar {
+  width: 0;
 }
 
 .gallery-menu-list {
@@ -243,11 +252,14 @@ a:hover, a:focus {
 
 .gallery-menu-item {
   position: relative;
+}
+
+.gallery-menu-item:not(:last-child) {
   margin-bottom: 30px;
 }
 
 .gallery-menu-item:not(:last-child)::after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   left: 50%;
@@ -273,15 +285,15 @@ a:hover, a:focus {
   transform: scale(1.1);
 }
 
-.menu-item-label {
+.menu-cat-button {
   display: block;
+  width: 100%;
   padding: 5px;
   margin-bottom: 10px;
-  background-color: rgba(77, 81, 85, 0.46);
-}
-
-.menu-item-checkbox {
-  visibility: hidden;
+  text-align: left;
+  color: #bebebe;
+  background-image: linear-gradient(to left, #161616, rgba(77, 81, 85, 0.46));
+  border: none;
 }
 
 .menu-item-wrap {
@@ -291,8 +303,9 @@ a:hover, a:focus {
   transition: height 250ms linear;
 }
 
-.menu-item-checkbox:checked + .menu-item-wrap {
+.menu-item-wrap.isOpen {
   height: 100%;
+  overflow-y: auto;
 }
 
 .gallery-page {
