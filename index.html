@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="./css/main.min.css" />
     <title>Document</title>
   </head>
-
   <body>
     <header class="section-header">
       <nav class="nav">
@@ -51,11 +50,17 @@
             ></use>
           </svg>
         </button>
+        <label class="outer-frame">
+          <input type="checkbox" class="nightMode-checkbox is-hidden" />
+          <div class="inner-frame">
+            <div class="toggle-button"></div>
+          </div>
+        </label>
       </nav>
     </header>
     <main class="section-gallery">
       <div class="gallery-menu">
-        <button class="menu-cat-button">Block 1</button>        
+        <button class="menu-cat-button">Block 1</button>
         <div class="menu-item-wrap">
           <ul class="gallery-menu-list">
             <li class="gallery-menu-item">
@@ -130,7 +135,7 @@
             </li>
           </ul>
         </div>
-        <button class="menu-cat-button">Block 2</button>       
+        <button class="menu-cat-button">Block 2</button>
         <div class="menu-item-wrap">
           <ul class="gallery-menu-list">
             <li class="gallery-menu-item">
@@ -416,13 +421,7 @@
       </div>
     </div>
   </body>
-  <script src="./js/menu.js">
-    Login
-  </script>
-  <script src="./js/modal.js">
-    Login
-  </script>
-  <script src="./js/gallery-menu.js">
+  <script src="./js/script.js">
     Login
   </script>
 </html>

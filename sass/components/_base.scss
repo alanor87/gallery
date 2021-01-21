@@ -16,9 +16,10 @@
 }
 body {
   background-color: $main-background-color;
-  font-family: "Piazzolla";
+  font-family: 'Piazzolla';
   color: $main-text-color;
-  padding-top: 28px;
+  padding-top: 40px;
+  transition: background-color 350ms linear, color 350ms linear;
 }
 img {
   display: block;

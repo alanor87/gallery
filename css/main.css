@@ -1,9 +1,24 @@
+:root {
+  --main-background-color: rgb(22, 22, 22);
+  --main-text-color: rgb(190, 190, 190);
+  --color-accent: rgb(240, 117, 35);
+  --color-border-main: rgba(77, 81, 85, 0.46);
+  --another-color: #333333;
+}
+
 .is-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
   margin: -1px;
+  overflow: hidden;
   clip: rect(0, 0, 0, 0);
+}
+
+.light-theme {
+  --main-background-color: rgb(219, 219, 219);
+  --main-text-color: rgb(65, 65, 65);
+  transition: background-color 250ms linear, color 250ms linear;
 }
 
 * {
@@ -17,19 +32,20 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #161616;
+  background: var(--main-background-color);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(77, 81, 85, 0.46);
+  background-color: var(--color-border-main);
   border-radius: 2px;
 }
 
 body {
-  background-color: #161616;
-  font-family: "Piazzolla";
-  color: #bebebe;
-  padding-top: 28px;
+  background-color: var(--main-background-color);
+  font-family: 'Piazzolla';
+  color: var(--main-text-color);
+  padding-top: 40px;
+  transition: background-color 350ms linear, color 350ms linear;
 }
 
 img {
@@ -38,12 +54,12 @@ img {
 
 a {
   text-decoration: none;
-  color: #bebebe;
+  color: var(--main-text-color);
   transition: color 250ms linear;
 }
 
 a:hover, a:focus {
-  color: #f07523;
+  color: var(--color-accent);
 }
 
 /*#################### HEADER #########################*/
@@ -55,14 +71,14 @@ a:hover, a:focus {
   left: 0;
   width: 100vw;
   box-shadow: 0px 0px 10px 2px black;
-  background-color: #161616;
+  background-color: var(--main-background-color);
   z-index: 10;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
   margin-left: 25px;
   margin-right: 25px;
 }
@@ -74,23 +90,23 @@ a:hover, a:focus {
 }
 
 .slide-button {
-  background-color: #161616;
-  border: 1px solid rgba(77, 81, 85, 0.46);
+  background-color: var(--main-background-color);
+  border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
   width: 40px;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #bebebe;
+  color: var(--main-text-color);
   border-radius: 50%;
   transition: color 250ms linear, border-color 250ms linear;
   z-index: 10;
 }
 
 .slide-button:hover, .slide-button:focus {
-  color: #f07523;
-  border-color: #f07523;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
   outline: none;
 }
 
@@ -121,7 +137,7 @@ a:hover, a:focus {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #161616;
+    background-color: var(--main-background-color);
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom-left-radius: 10px;
@@ -162,7 +178,7 @@ a:hover, a:focus {
   width: 100%;
   height: 2px;
   border-radius: 4px;
-  background-color: #f07523;
+  background-color: var(--color-accent);
   opacity: 0;
   transition: opacity 250ms linear;
 }
@@ -173,19 +189,19 @@ a:hover, a:focus {
 
 .button-login-register {
   display: block;
-  background-color: #161616;
-  border: 1px solid rgba(77, 81, 85, 0.46);
+  background-color: var(--main-background-color);
+  border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
   font-size: 14px;
   background-color: transparent;
   padding: 3px 10px;
-  color: #bebebe;
+  color: var(--main-text-color);
   transition: color 250ms linear, border-color 250ms linear;
 }
 
 .button-login-register:hover, .button-login-register:focus {
-  color: #f07523;
-  border-color: #f07523;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .header-menu-button {
@@ -201,7 +217,7 @@ a:hover, a:focus {
 }
 
 .header-menu-button svg {
-  fill: #bebebe;
+  fill: var(--main-text-color);
 }
 
 .header-menu-button .menu-close {
@@ -219,7 +235,7 @@ a:hover, a:focus {
 /*#################### GALLERY #########################*/
 .section-gallery {
   display: flex;
-  height: calc(100vh - 35px);
+  height: calc(100vh - 55px);
 }
 
 .gallery-menu {
@@ -265,13 +281,13 @@ a:hover, a:focus {
   left: 50%;
   height: 30px;
   width: 1px;
-  background-color: #bebebe;
+  background-color: var(--main-text-color);
   z-index: -1;
 }
 
 .gallery-menu-thumb {
-  background-color: #161616;
-  border: 1px solid rgba(77, 81, 85, 0.46);
+  background-color: var(--main-background-color);
+  border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
   margin: auto;
   width: 100px;
@@ -281,7 +297,7 @@ a:hover, a:focus {
 }
 
 .gallery-menu-thumb:hover {
-  border-color: #f07523;
+  border-color: var(--color-accent);
   transform: scale(1.1);
 }
 
@@ -291,8 +307,8 @@ a:hover, a:focus {
   padding: 5px;
   margin-bottom: 10px;
   text-align: left;
-  color: #bebebe;
-  background-image: linear-gradient(to left, #161616, rgba(77, 81, 85, 0.46));
+  color: var(--main-text-color);
+  background-image: linear-gradient(to left, var(--main-background-color), var(--color-border-main));
   border: none;
 }
 
@@ -318,8 +334,8 @@ a:hover, a:focus {
 }
 
 .gallery-page-wrap {
-  background-color: #161616;
-  border: 1px solid rgba(77, 81, 85, 0.46);
+  background-color: var(--main-background-color);
+  border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
   position: relative;
   width: calc(100% - 20px);
@@ -349,6 +365,7 @@ a:hover, a:focus {
   position: absolute;
   bottom: 0;
   padding: 7px 20px;
+  color: #bebebe;
   background-color: rgba(22, 22, 22, 0.6);
   opacity: 0;
   transform: translateY(20px);
@@ -408,11 +425,11 @@ a:hover, a:focus {
 
 .modal-auth-form {
   position: relative;
-  background-color: #161616;
-  border: 1px solid rgba(77, 81, 85, 0.46);
+  background-color: var(--main-background-color);
+  border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
   padding: 10px;
-  background-color: #161616;
+  background-color: var(--main-background-color);
   width: 100%;
   max-width: 450px;
 }
@@ -426,17 +443,17 @@ a:hover, a:focus {
   position: absolute;
   right: 5px;
   top: 5px;
-  background-color: #161616;
-  border: 1px solid rgba(77, 81, 85, 0.46);
+  background-color: var(--main-background-color);
+  border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
   border-radius: 50%;
   transition: color 250ms linear, border-color 250ms linear;
-  color: #bebebe;
+  color: var(--main-text-color);
 }
 
 .modal-auth-form .modal-close-btn:hover, .modal-auth-form .modal-close-btn:focus {
-  color: #f07523;
-  border-color: #f07523;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
   outline: none;
 }
 
@@ -450,7 +467,7 @@ a:hover, a:focus {
   align-items: center;
   flex-direction: row;
   margin-bottom: 20px;
-  color: #f07523;
+  color: var(--color-accent);
 }
 
 @media screen and (max-width: 400px) {
@@ -460,14 +477,14 @@ a:hover, a:focus {
 }
 
 .label-authorisation input {
-  background-color: #161616;
-  border: 1px solid rgba(77, 81, 85, 0.46);
+  background-color: var(--main-background-color);
+  border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
   height: 30px;
   width: 100%;
   max-width: 280px;
   padding: 5px;
-  color: #bebebe;
+  color: var(--main-text-color);
   transition: color 250ms linear, border-color 250ms linear;
 }
 
@@ -478,24 +495,110 @@ a:hover, a:focus {
 }
 
 .label-authorisation input:focus {
-  border-color: #f07523;
+  border-color: var(--color-accent);
   outline: none;
 }
 
 .modal-auth-form-button {
-  background-color: #161616;
-  border: 1px solid rgba(77, 81, 85, 0.46);
+  background-color: var(--main-background-color);
+  border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
   display: block;
   margin: auto;
-  color: #bebebe;
+  color: var(--main-text-color);
   padding: 5px 10px;
   text-align: center;
   transition: color 250ms linear, border-color 250ms linear;
 }
 
 .modal-auth-form-button:hover, .modal-auth-form-button:focus {
-  color: #f07523;
-  border-color: #f07523;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.outer-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 60px;
+  background-color: var(--main-background-color);
+  box-shadow: inset 0 0 2px 0px #4d4c4c, 1px 1px 3px -1px #000000;
+  border-radius: 25px;
+}
+
+.inner-frame {
+  position: relative;
+  height: calc(100% - 4px);
+  width: calc(100% - 4px);
+  background-image: linear-gradient(to top, #2b2b2b 34%, #000000);
+  border-radius: 25px;
+  box-shadow: 0 0 1px 0px #000000, inset 0 0 12px 1px #000000;
+}
+
+.inner-frame::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  background-color: transparent;
+  transition: background-color 250ms linear, box-shadow 250ms linear;
+}
+
+.toggle-button {
+  position: relative;
+  height: 100%;
+  width: 75%;
+  border-radius: 25px;
+  background-image: linear-gradient(to top, var(--main-background-color), #363636 66%, #5c5c5c);
+  transform: translateX(0);
+  transition: transform 250ms linear;
+  z-index: 1;
+}
+
+.toggle-button::after {
+  content: "";
+  position: absolute;
+  top: 45%;
+  right: 18%;
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background-image: linear-gradient(to bottom, #000000, #363636 66%, #5c5c5c);
+  transition: box-shadow 250ms linear;
+}
+
+.toggle-button::before {
+  content: "";
+  position: absolute;
+  top: 45%;
+  right: 18%;
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 250ms linear, box-shadow 250ms linear;
+  z-index: 1;
+}
+
+.nightMode-checkbox:checked ~ .inner-frame::after {
+  box-shadow: inset 0 0 12px 0px #000000;
+  background-color: var(--color-accent);
+}
+
+.nightMode-checkbox:checked ~ .inner-frame .toggle-button {
+  transform: translateX(33%);
+}
+
+.nightMode-checkbox:checked ~ .inner-frame .toggle-button::after {
+  box-shadow: 0 0 5px 1px var(--color-accent);
+}
+
+.nightMode-checkbox:checked ~ .inner-frame .toggle-button::before {
+  background-color: var(--color-accent);
+  box-shadow: inset 0 0 1px 0 #000000;
 }
 /*# sourceMappingURL=main.css.map */
