@@ -29,13 +29,14 @@
   })
 })();
 
-//---------------------------- GALLERY MENY HANDLER  ------------------//
+//---------------------------- GALLERY MENU HANDLER  ------------------//
 
 const menuWrapRef = document.querySelectorAll('.menu-item-wrap');
 const menuListItem = Array.from(document.querySelectorAll('.menu-cat-button'));
 
 function menuItemOpen(event) {
   const targetItem = event.target.nextElementSibling.classList;
+  console.log(event.target.parentNode);
   if (!targetItem.contains('isOpen')) {
     menuWrapRef.forEach(item => item.classList.remove('isOpen'));
     targetItem.add('isOpen');
