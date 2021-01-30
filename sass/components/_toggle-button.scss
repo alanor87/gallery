@@ -1,4 +1,4 @@
-.outer-frame {
+.toggle-element {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,6 +9,7 @@
   border-radius: 25px;
 }
 .inner-frame {
+  display: block;
   position: relative;
   height: calc(100% - 4px);
   width: calc(100% - 4px);
@@ -30,6 +31,7 @@
 }
 
 .toggle-button {
+  display: block;
   position: relative;
   height: 100%;
   width: 75%;

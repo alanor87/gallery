@@ -64,7 +64,10 @@ a:hover, a:focus {
 
 /*#################### HEADER #########################*/
 .section-header {
-  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
   position: fixed;
   top: 0;
   bottom: initial;
@@ -77,10 +80,9 @@ a:hover, a:focus {
 
 .nav {
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
   align-items: center;
-  margin-left: 25px;
-  margin-right: 25px;
 }
 
 @media screen and (min-width: 600px) {
@@ -327,10 +329,17 @@ a:hover, a:focus {
 .gallery-page {
   display: flex;
   justify-content: space-around;
+  align-content: flex-start;
   flex-wrap: wrap;
   overflow-y: auto;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+@media screen and (min-width: 1200px) {
+  .gallery-page {
+    justify-content: flex-start;
+  }
 }
 
 .gallery-page-wrap {
@@ -338,17 +347,11 @@ a:hover, a:focus {
   border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
   position: relative;
-  width: calc(100% - 20px);
-  height: auto;
+  width: 250px;
+  height: 250px;
   max-width: 100%;
-  margin: 5px;
+  margin: 2px;
   overflow: hidden;
-}
-
-@media screen and (min-width: 1200px) {
-  .gallery-page-wrap {
-    width: calc(50% - 10px);
-  }
 }
 
 .gallery-page-wrap:hover .gallery-page-text {
@@ -364,7 +367,7 @@ a:hover, a:focus {
 .gallery-page-text {
   position: absolute;
   bottom: 0;
-  padding: 7px 20px;
+  padding: 5px 20px;
   color: #bebebe;
   background-color: rgba(22, 22, 22, 0.6);
   opacity: 0;
@@ -374,13 +377,14 @@ a:hover, a:focus {
 
 .gallery-page-header {
   text-align: center;
+  font-size: 20px;
 }
 
 .gallery-page-header::after {
   content: '';
   display: block;
-  margin: 5px auto;
-  height: 20px;
+  margin: auto;
+  height: 15px;
   width: 50px;
   background-image: url("../../../img/tilde.svg");
   background-size: contain;
@@ -390,7 +394,8 @@ a:hover, a:focus {
 
 .gallery-page-paragraph {
   text-indent: 1em;
-  margin-bottom: 15px;
+  font-size: 15px;
+  margin-bottom: 5px;
 }
 
 .backdrop {
@@ -516,7 +521,7 @@ a:hover, a:focus {
   border-color: var(--color-accent);
 }
 
-.outer-frame {
+.toggle-element {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -528,6 +533,7 @@ a:hover, a:focus {
 }
 
 .inner-frame {
+  display: block;
   position: relative;
   height: calc(100% - 4px);
   width: calc(100% - 4px);
@@ -549,6 +555,7 @@ a:hover, a:focus {
 }
 
 .toggle-button {
+  display: block;
   position: relative;
   height: 100%;
   width: 75%;
