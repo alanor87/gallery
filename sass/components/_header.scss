@@ -15,75 +15,33 @@
   }
   align-items: center;
 }
-.slide-button {
-  @include border-shadow;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: $main-text-color;
-  border-radius: 50%;
-  transition: color 250ms linear, border-color 250ms linear;
-  z-index: 10;
-  &:hover,
-  &:focus {
-    color: $color-accent;
-    border-color: $color-accent;
-    outline: none;
-  }
-  & svg {
-    fill: currentColor;
-  }
-}
 .logo {
   white-space: nowrap;
   font-weight: 700;
   font-size: 20px;
 }
 .nav-login-list {
-  display: flex;
-  list-style: none;
-  align-items: center;
-  @media screen and (max-width: $breakpoint-mobile - 1px) {
-    display: none;
-    &.is-open {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background-color: $main-background-color;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-      box-shadow: 0px 7px 6px -5px black;
-      z-index: 10;
-    }
-  }
+  display: none;
   @media screen and (min-width: $breakpoint-mobile) {
-    position: static;
-    width: 80%;
+    display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    width: 80%;
   }
 }
-.nav-list-item {
-  @media screen and (min-width: 0) and (max-width: $breakpoint-mobile - 1px) {
-    margin-bottom: 10px;
-  }
-}
+
 .nav-list-link {
   position: relative;
   display: block;
-  padding: 10px 0px;
+  padding: 10px 0px;  
+  text-align: center;
   font-size: 16px;
   font-weight: 400;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0px;
     display: block;

@@ -16,17 +16,21 @@
   </head>
   <body>
     <header class="section-header">
-       <label class="side-menu toggle-element">
-        <input type="checkbox" class="sideMenu-checkbox is-hidden" />
+      <label class="side-menu toggle-element">
+        <input
+          type="checkbox"
+          class="sideMenu-checkbox toggle-checkbox is-hidden"
+          checked
+        />
         <span class="inner-frame">
-          <span class="toggle-button"></span>
+          <span class="toggle-button" title="Show/hide side menu"></span>
         </span>
       </label>
       <nav class="nav">
         <a href="" class="logo">
           <h1>Photo gallery</h1>
         </a>
-        <ul class="nav-login-list" data-menu>
+        <ul class="nav-login-list modal-hidden" data-menu>
           <li class="nav-list-item">
             <a href="" class="nav-list-link">Link 1</a>
           </li>
@@ -37,7 +41,7 @@
             <a href="" class="nav-list-link">Link 3</a>
           </li>
           <li>
-            <button type="button" class="button-login-register" data-modal-open>
+            <button type="button" class="button-login-register" data-auth-open>
               Authorisation
             </button>
           </li>
@@ -52,8 +56,11 @@
           </svg>
         </button>
       </nav>
-      <label class="night-mode toggle-element">
-        <input type="checkbox" class="nightMode-checkbox is-hidden" />
+      <label class="night-mode toggle-element" title="Night mode toggle">
+        <input
+          type="checkbox"
+          class="nightMode-checkbox toggle-checkbox is-hidden"
+        />
         <span class="inner-frame">
           <span class="toggle-button"></span>
         </span>
@@ -514,10 +521,10 @@
       </div>
       <div class="gallery-page"></div>
     </main>
-    <div class="backdrop is-hidden" data-modal>
+    <div class="backdrop modal-hidden" data-auth-modal>
       <div class="modal-wrapper">
         <div class="modal-auth-form">
-          <button type="button" class="modal-close-btn" data-modal-close>
+          <button type="button" class="modal-close-btn" data-auth-close>
             <svg width="30px" height="30px">
               <use href="./img/symbol-defs.svg#menu-close"></use>
             </svg>
@@ -535,6 +542,37 @@
             <button type="submit" class="modal-auth-form-button">Login</button>
           </form>
         </div>
+      </div>
+    </div>
+    <div class="backdrop modal-hidden" data-nav-modal>
+      <div class="modal-wrapper">
+        <nav class="modal-nav">
+          <ul class="modal-nav-login-list">
+            <li class="modal-nav-list-item">
+              <a href="" class="nav-list-link">Link 1</a>
+            </li>
+            <li class="modal-nav-list-item">
+              <a href="" class="nav-list-link">Link 2</a>
+            </li>
+            <li class="modal-nav-list-item">
+              <a href="" class="nav-list-link">Link 3</a>
+            </li>
+            <li class="modal-nav-list-item">
+              <button
+                type="button"
+                class="button-login-register"
+                data-auth-open
+              >
+                Authorisation
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="backdrop modal-hidden" data-img-modal>
+      <div class="modal-wrapper">
+        <img class="modal-image" src="">
       </div>
     </div>
   </body>

@@ -1,0 +1,12 @@
+.modal-nav-login-list {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  justify-content: center;
+}
+.modal-nav-list-item {
+  margin-bottom: 30px;
+  & .nav-list-link {
+    font-size: 20px;
+  }
+}

@@ -6,6 +6,7 @@
   width: 100vw;
   box-shadow: 0px 0px 10px 2px black;
   background-color: $main-background-color;
+  transition: background-color 250ms linear, color 250ms linear;
   z-index: 10;
 }
 @mixin border-shadow($bottom-width: 1px, $right-width: 1px) {
