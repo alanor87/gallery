@@ -69,13 +69,7 @@ const backdropRef = Array.from(document.querySelectorAll('.backdrop'));
     const mobileMenuOpenHandler = function () {
       mobileMenuRef.classList.toggle("modal-hidden");
     }
-    const mobileMenuCloseHandler = function () {
-      mobileMenuRef.classList.toggle("modal-hidden");
-    }
-
     menuBtnRef.addEventListener("click", mobileMenuOpenHandler);
-    mobileMenuRef.addEventListener('click', mobileMenuCloseHandler);
-
   }
 
   //----------------------- IMAGE MODAL WINDOW SHOW/HIDE ---------------//
