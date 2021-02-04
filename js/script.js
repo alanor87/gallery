@@ -1,14 +1,24 @@
 
 import imagesObjArray from "./imagesArray.js"
+
+const openAuthModalBtn = Array.from(document.querySelectorAll("[data-auth-open]"));
+const closeAuthModalBtn = Array.from(document.querySelectorAll("[data-auth-close]"));
+const modalAuthlRef = document.querySelector("[data-auth-modal]");
 const galleryPageRef = document.querySelector('.gallery-page');
+const galleryMenu = document.querySelector('.gallery-menu');
 const backdropRef = Array.from(document.querySelectorAll('.backdrop'));
+const modalImgWindowRef = document.querySelector('[data-img-modal]');
+const menuBtnRef = document.querySelector("[data-menu-button]");
+const modalNavRef = document.querySelector("[data-nav-modal]");
+const modalImgRef = document.querySelector('.modal-image');
+const menuWrapRef = document.querySelectorAll('.menu-item-wrap');
+const menuListItem = Array.from(document.querySelectorAll('.menu-cat-button'));
+const nightModeSwitch = document.querySelector('.nightMode-checkbox');
+const sideMenuSwitch = document.querySelector('.sideMenu-checkbox');
 
-//-------------------------------  GALLERY PAGE IMAGES GENERATION  -------------------//
-
-{
-  function galleryImgRender(imagesObjArray) {
-    const imgRenderArray = imagesObjArray.map(el => {
-      return `<div class="gallery-page-wrap">
+function galleryImgRender(imagesObjArray) {
+  const imgRenderArray = imagesObjArray.map(el => {
+    return `<div class="gallery-page-wrap">
           <div class="gallery-page-img-wrap">
               <img
                 class="gallery-page-img"
@@ -25,104 +35,55 @@ const backdropRef = Array.from(document.querySelectorAll('.backdrop'));
             </p>
           </div>
         </div>`;
-    });
-    galleryPageRef.insertAdjacentHTML('afterbegin', imgRenderArray.join(''));
-  }
-  galleryImgRender(imagesObjArray);
-
+  });
+  galleryPageRef.insertAdjacentHTML('afterbegin', imgRenderArray.join(''));
 }
 
-//-------------------------------  BACKDROP CLOSE   -------------------//
-
-{
-  backdropRef.forEach(backdrop => {
-    backdrop.addEventListener('click', (event) => {
-      if (event.target.classList.contains('modal-wrapper')) backdrop.classList.add('modal-hidden');
-    })
+function backdropCloseHandler(event) {
+  if (event.target.classList.contains('modal-wrapper')) {
+    event.currentTarget.classList.add('modal-hidden');
+    modalImgRef.src = '';
   }
-  )
 }
-  //----------------------- AUTH MODAL WINDOW SHOW/HIDE ---------------//
 
-  {
+function modalAuthHandler() {
+  modalAuthlRef.classList.toggle("modal-hidden");
+};
 
-    const refs = {
-      openAuthModalBtn: Array.from(document.querySelectorAll("[data-auth-open]")),
-      closeAuthModalBtn: Array.from(document.querySelectorAll("[data-auth-close]")),
-      modal: document.querySelector("[data-auth-modal]"),
-    };
-    refs.openAuthModalBtn.forEach(btn => btn.addEventListener("click", toggleModal));
-    refs.closeAuthModalBtn.forEach(btn => btn.addEventListener("click", toggleModal));
+function mobileMenuHandler() {
+  modalNavRef.classList.toggle("modal-hidden");
+};
 
-    function toggleModal() {
-      refs.modal.classList.toggle("modal-hidden");
-    }
+function openModalImgHandler(event) {
+  const target = event.target;
+  if (target.classList.contains('gallery-page-img')) {
+    modalImgRef.src = target.dataset.src;
+    modalImgWindowRef.classList.toggle('modal-hidden');
+  };
+};
 
-  }
+function sideMenuItemOpen(event) {
+  const targetItem = event.target.nextElementSibling.classList;
+  if (!targetItem.contains('isOpen')) {
+    menuWrapRef.forEach(item => item.classList.remove('isOpen'));
+    targetItem.add('isOpen');
+  } else targetItem.remove('isOpen');
 
-  //----------------------- MOBILE MENU MODAL WINDOW SHOW/HIDE ---------------//
+};
 
-  {
+function nightModeToggle() {
+  document.querySelector('body').classList.toggle('light-theme');
+};
 
-    const menuBtnRef = document.querySelector("[data-menu-button]");
-    const mobileMenuRef = document.querySelector("[data-nav-modal]");
-    const mobileMenuOpenHandler = function () {
-      mobileMenuRef.classList.toggle("modal-hidden");
-    }
-    menuBtnRef.addEventListener("click", mobileMenuOpenHandler);
-  }
-
-  //----------------------- IMAGE MODAL WINDOW SHOW/HIDE ---------------//
-
-  {
-    const modalImgWindowRef = document.querySelector('[data-img-modal]');
-    const modalImgRef = document.querySelector('.modal-image');
-    function openModalImgHandler(event) {
-      const target = event.target;
-      if (target.classList.contains('gallery-page-img')) {
-        modalImgRef.src = target.dataset.src;
-        modalImgWindowRef.classList.toggle('modal-hidden');
-      }
-    }
-    galleryPageRef.addEventListener('click', openModalImgHandler)
-
-  }
-
-  //---------------------------- GALLERY MENU ELEMENTS OPEN/CLOSE HANDLER  ------------------//
-
-  {
-    const menuWrapRef = document.querySelectorAll('.menu-item-wrap');
-    const menuListItem = Array.from(document.querySelectorAll('.menu-cat-button'));
-    function menuItemOpen(event) {
-      const targetItem = event.target.nextElementSibling.classList;
-      if (!targetItem.contains('isOpen')) {
-        menuWrapRef.forEach(item => item.classList.remove('isOpen'));
-        targetItem.add('isOpen');
-      } else targetItem.remove('isOpen');
-
-    };
-    menuListItem.forEach(item => item.addEventListener('click', menuItemOpen));
-  }
-
-  //------------------------------- DAY/NIGHT TOGGLE SWITCH --------------------//
-
-  {
-    const nightModeSwitch = document.querySelector('.nightMode-checkbox');
-    function nightModeToggle() {
-      document.querySelector('body').classList.toggle('light-theme');
-    }
-    nightModeSwitch.addEventListener('change', nightModeToggle);
-  }
-
-  //--------------------------------- GALLERY MENU OPEN/CLOSE SWITCH  ---------------------//
-
-  {
-    const sideMenuSwitch = document.querySelector('.sideMenu-checkbox');
-    const galleryMenu = document.querySelector('.gallery-menu');
-    sideMenuSwitch.addEventListener('change', () => { galleryMenu.classList.toggle('is-hidden') })
-  }
-
-
-
-
+galleryImgRender(imagesObjArray);
+nightModeSwitch.addEventListener('change', nightModeToggle);
+sideMenuSwitch.addEventListener('change', () => { galleryMenu.classList.toggle('is-hidden') });
+menuListItem.forEach(item => item.addEventListener('click', sideMenuItemOpen));
+galleryPageRef.addEventListener('click', openModalImgHandler);
+menuBtnRef.addEventListener("click", mobileMenuHandler);
+openAuthModalBtn.forEach(btn => btn.addEventListener("click", modalAuthHandler));
+closeAuthModalBtn.forEach(btn => btn.addEventListener("click", modalAuthHandler));
+backdropRef.forEach(backdrop => {
+  backdrop.addEventListener('click', (backdropCloseHandler))
+});
 

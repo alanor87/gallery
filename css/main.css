@@ -261,6 +261,7 @@ a:hover, a:focus {
   text-align: left;
   color: var(--main-text-color);
   background-image: linear-gradient(to left, var(--main-background-color), var(--color-border-main));
+  cursor: pointer;
   border: none;
 }
 
@@ -297,6 +298,7 @@ a:hover, a:focus {
   border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
   position: relative;
+  flex-grow: 1;
   width: 250px;
   height: 250px;
   max-width: 100%;
@@ -312,12 +314,14 @@ a:hover, a:focus {
 
 .gallery-page-img {
   width: 100%;
+  min-width: 250px;
   height: auto;
 }
 
 .gallery-page-text {
   position: absolute;
   bottom: 0;
+  width: 100%;
   padding: 5px 20px;
   color: #bebebe;
   background-color: rgba(22, 22, 22, 0.6);
@@ -470,6 +474,11 @@ a:hover, a:focus {
   border-color: var(--color-accent);
 }
 
+.modal-image {
+  height: 90%;
+  width: auto;
+}
+
 .modal-nav-login-list {
   display: flex;
   list-style: none;
@@ -485,9 +494,14 @@ a:hover, a:focus {
   font-size: 20px;
 }
 
-.modal-image {
-  height: 90%;
-  width: auto;
+.upload-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  border: 5px dashed var(--main-text-color);
+  border-radius: 10px;
 }
 
 .toggle-element {
