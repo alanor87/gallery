@@ -24,12 +24,32 @@
 .modal-wrapper {
   width: 100%;
   height: 100%;
-  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow-y: auto;
 }
+
+  .modal-close-btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    @include border-shadow;
+    border-radius: 50%;
+    transition: color 250ms linear, border-color 250ms linear;
+    color: $main-text-color;
+    &:hover,
+    &:focus {
+      color: $color-accent;
+      border-color: $color-accent;
+      outline: none;
+    }
+    & svg {
+      fill: currentColor;
+      pointer-events: none;
+    }
+
+  }
 
 @import "modal-auth-form";
 @import "modal-image";

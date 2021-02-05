@@ -32,7 +32,9 @@
         </a>
         <ul class="nav-login-list modal-hidden" data-menu>
           <li class="nav-list-item">
-            <a href="" class="nav-list-link">Upload</a>
+            <a href="" class="nav-list-link" data-mod-open-trigger="upload-open"
+              >Upload</a
+            >
           </li>
           <li class="nav-list-item">
             <a href="" class="nav-list-link">Link 2</a>
@@ -41,21 +43,25 @@
             <a href="" class="nav-list-link">Link 3</a>
           </li>
           <li>
-            <button type="button" class="button-login-register" data-auth-open>
+            <button
+              type="button"
+              class="button-login-register"
+              data-mod-open-trigger="auth-open"
+            >
               Authorisation
             </button>
           </li>
         </ul>
-        <button type="button" class="header-menu-button" data-menu-button>
-          <svg width="40px" height="40px">
-            <use href="./img/symbol-defs.svg#menu-icon" class="menu-icon"></use>
-            <use
-              href="./img/symbol-defs.svg#menu-close"
-              class="menu-close"
-            ></use>
-          </svg>
-        </button>
       </nav>
+      <button
+        type="button"
+        class="header-menu-button"
+        data-mod-open-trigger="nav-open"
+      >
+        <svg width="40px" height="40px">
+          <use href="./img/symbol-defs.svg#menu-icon" class="menu-icon"></use>
+        </svg>
+      </button>
       <label class="night-mode toggle-element" title="Night mode toggle">
         <input
           type="checkbox"
@@ -519,12 +525,16 @@
           </ul>
         </div>
       </div>
-      <div class="gallery-page"></div>
+      <div class="gallery-page" data-mod-open-trigger="img-open"></div>
     </main>
     <div class="backdrop modal-hidden" data-auth-modal>
-      <div class="modal-wrapper">
+      <div class="modal-wrapper" data-mod-close-trigger="auth-close">
         <div class="modal-auth-form">
-          <button type="button" class="modal-close-btn" data-auth-close>
+          <button
+            type="button"
+            class="modal-close-btn"
+            data-mod-close-trigger="auth-close"
+          >
             <svg width="30px" height="30px">
               <use href="./img/symbol-defs.svg#menu-close"></use>
             </svg>
@@ -545,11 +555,25 @@
       </div>
     </div>
     <div class="backdrop modal-hidden" data-nav-modal>
-      <div class="modal-wrapper">
+      <div class="modal-wrapper" data-mod-close-trigger="nav-close">
         <nav class="modal-nav">
+          <button
+            type="button"
+            class="modal-close-btn"
+            data-mod-close-trigger="nav-close"
+          >
+            <svg width="30px" height="30px">
+              <use href="./img/symbol-defs.svg#menu-close"></use>
+            </svg>
+          </button>
           <ul class="modal-nav-login-list">
             <li class="modal-nav-list-item">
-              <a href="" class="nav-list-link">Link 1</a>
+              <a
+                href=""
+                class="nav-list-link"
+                data-mod-open-trigger="upload-open"
+                >Upload</a
+              >
             </li>
             <li class="modal-nav-list-item">
               <a href="" class="nav-list-link">Link 2</a>
@@ -561,7 +585,7 @@
               <button
                 type="button"
                 class="button-login-register"
-                data-auth-open
+                data-mod-open-trigger="auth-open"
               >
                 Authorisation
               </button>
@@ -571,13 +595,24 @@
       </div>
     </div>
     <div class="backdrop modal-hidden" data-img-modal>
-      <div class="modal-wrapper">
-        <img class="modal-image" src="">
+      <div class="modal-wrapper" data-mod-close-trigger="img-close">
+        <img class="modal-image" src="" />
       </div>
     </div>
     <div class="backdrop modal-hidden" data-upload-modal>
-      <div class="modal-wrapper">
-        <div class="upload-frame"><span class="upload-text">Drag'n'drop images here</span></div>
+      <div class="modal-wrapper" data-mod-close-trigger="upload-close">
+        <div class="upload-frame">
+          <button
+            type="button"
+            class="modal-close-btn"
+            data-mod-close-trigger="upload-close"
+          >
+            <svg width="30px" height="30px">
+              <use href="./img/symbol-defs.svg#menu-close"></use>
+            </svg>
+          </button>
+          <span class="upload-text">Drag'n'drop images here</span>
+        </div>
       </div>
     </div>
   </body>

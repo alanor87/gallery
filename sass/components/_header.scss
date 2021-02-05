@@ -74,15 +74,18 @@
   }
 }
 .header-menu-button {
+  position: relative;
   display: block;
   border: none;
   @media screen and (min-width: $breakpoint-mobile) {
     display: none;
   }
   background-color: transparent;
+  cursor: pointer;
 
   & svg {
     fill: $main-text-color;
+    pointer-events: none;
   }
 }
 .header-menu-button .menu-close {

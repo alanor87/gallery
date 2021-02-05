@@ -8,7 +8,7 @@
 }
 
 .light-theme {
-  --main-background-color: rgb(219, 219, 219);
+  --main-background-color: rgba(219, 219, 219);
   --main-text-color: rgb(65, 65, 65);
   transition: background-color 250ms linear, color 250ms linear;
 }

@@ -16,7 +16,7 @@
 }
 
 .light-theme {
-  --main-background-color: rgb(219, 219, 219);
+  --main-background-color: rgba(219, 219, 219);
   --main-text-color: rgb(65, 65, 65);
   transition: background-color 250ms linear, color 250ms linear;
 }
@@ -157,9 +157,11 @@ a:hover, a:focus {
 }
 
 .header-menu-button {
+  position: relative;
   display: block;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 600px) {
@@ -170,6 +172,7 @@ a:hover, a:focus {
 
 .header-menu-button svg {
   fill: var(--main-text-color);
+  pointer-events: none;
 }
 
 .header-menu-button .menu-close {
@@ -374,11 +377,33 @@ a:hover, a:focus {
 .modal-wrapper {
   width: 100%;
   height: 100%;
-  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow-y: auto;
+}
+
+.modal-close-btn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background-color: var(--main-background-color);
+  border: 1px solid var(--color-border-main);
+  box-shadow: 3px 3px 5px 0px black;
+  border-radius: 50%;
+  transition: color 250ms linear, border-color 250ms linear;
+  color: var(--main-text-color);
+}
+
+.modal-close-btn:hover, .modal-close-btn:focus {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+.modal-close-btn svg {
+  fill: currentColor;
+  pointer-events: none;
 }
 
 .modal-auth-form {
@@ -395,28 +420,6 @@ a:hover, a:focus {
 .modal-auth-form h2 {
   text-align: center;
   margin-bottom: 20px;
-}
-
-.modal-auth-form .modal-close-btn {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  background-color: var(--main-background-color);
-  border: 1px solid var(--color-border-main);
-  box-shadow: 3px 3px 5px 0px black;
-  border-radius: 50%;
-  transition: color 250ms linear, border-color 250ms linear;
-  color: var(--main-text-color);
-}
-
-.modal-auth-form .modal-close-btn:hover, .modal-auth-form .modal-close-btn:focus {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
-  outline: none;
-}
-
-.modal-auth-form .modal-close-btn svg {
-  fill: currentColor;
 }
 
 .label-authorisation {
@@ -491,16 +494,24 @@ a:hover, a:focus {
 }
 
 .modal-nav-list-item .nav-list-link {
+  color: #bebebe;
   font-size: 20px;
+}
+
+.modal-nav-list-item .button-login-register {
+  padding: 10px 15px;
+  font-size: 20px;
+  color: #bebebe;
 }
 
 .upload-frame {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 300px;
-  border: 5px dashed var(--main-text-color);
+  width: 70%;
+  height: 70%;
+  color: #bebebe;
+  border: 5px dashed #bebebe;
   border-radius: 10px;
 }
 

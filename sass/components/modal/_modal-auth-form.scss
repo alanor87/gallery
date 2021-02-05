@@ -11,24 +11,6 @@
     text-align: center;
     margin-bottom: 20px;
   }
-  .modal-close-btn {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    @include border-shadow;
-    border-radius: 50%;
-    transition: color 250ms linear, border-color 250ms linear;
-    color: $main-text-color;
-    &:hover,
-    &:focus {
-      color: $color-accent;
-      border-color: $color-accent;
-      outline: none;
-    }
-    & svg {
-      fill: currentColor;
-    }
-  }
 }
 .label-authorisation {
   display: flex;
