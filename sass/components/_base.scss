@@ -24,6 +24,9 @@ body {
 img {
   display: block;
 }
+button {
+  cursor: pointer;
+}
 a {
   text-decoration: none;
   color: $main-text-color;
@@ -33,4 +36,8 @@ a {
   &:focus {
     color: $color-accent;
   }
+}
+
+svg {
+  pointer-events: none;
 }

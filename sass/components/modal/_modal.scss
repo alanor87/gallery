@@ -22,36 +22,72 @@
   }
 }
 .modal-wrapper {
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   overflow-y: auto;
 }
 
-  .modal-close-btn {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    @include border-shadow;
-    border-radius: 50%;
-    transition: color 250ms linear, border-color 250ms linear;
-    color: $main-text-color;
-    &:hover,
-    &:focus {
-      color: $color-accent;
-      border-color: $color-accent;
-      outline: none;
-    }
-    & svg {
-      fill: currentColor;
-      pointer-events: none;
-    }
-
+.modal-close-btn {
+  position: absolute;
+  @include border-shadow;
+  border-radius: 50%;
+  right: 10px;
+  top: 10px;
+  transition: color 250ms linear, border-color 250ms linear;
+  color: var(--main-text-color);
+  &:hover,
+  &:focus {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    outline: none;
   }
+  & svg {
+    width: 50px;
+    height: 50px;
+    fill: currentColor;
+    pointer-events: none;
+  }
+}
 
-@import "modal-auth-form";
-@import "modal-image";
-@import "modal-nav";
-@import "modal-upload";
+.image-nav-arrow {
+  display: none;
+  border: none;
+  background-color: transparent;
+  color: rgb(190, 190, 190);
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: block;
+  }
+  & svg {
+    fill: currentColor;
+    height: 60px;
+    width: 90px;
+  }
+  &:hover,
+  &:focus {
+    color: var(--color-accent);
+  }
+}
+
+.mobile-image-nav {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: none;
+  }
+  & .image-nav-arrow {
+    display: block;
+  }
+}
+
+@import 'modal-auth-form';
+@import 'modal-image';
+@import 'modal-nav';
+@import 'modal-upload';

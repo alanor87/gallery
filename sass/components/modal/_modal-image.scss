@@ -1,4 +1,10 @@
 .modal-image {
-  height: 90%;
+width: 100%;
+height: auto;
+  @media screen and(min-width: $breakpoint-mobile) {       
+  height: 100%; 
   width: auto;
+  max-width: 100%;
 }
+}
+

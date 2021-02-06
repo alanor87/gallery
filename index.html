@@ -529,16 +529,16 @@
     </main>
     <div class="backdrop modal-hidden" data-auth-modal>
       <div class="modal-wrapper" data-mod-close-trigger="auth-close">
+        <button
+          type="button"
+          class="modal-close-btn"
+          data-mod-close-trigger="auth-close"
+        >
+          <svg>
+            <use href="./img/symbol-defs.svg#menu-close"></use>
+          </svg>
+        </button>
         <div class="modal-auth-form">
-          <button
-            type="button"
-            class="modal-close-btn"
-            data-mod-close-trigger="auth-close"
-          >
-            <svg width="30px" height="30px">
-              <use href="./img/symbol-defs.svg#menu-close"></use>
-            </svg>
-          </button>
           <h2>Login</h2>
           <form action="#" method="GET">
             <label class="label-authorisation">
@@ -562,7 +562,7 @@
             class="modal-close-btn"
             data-mod-close-trigger="nav-close"
           >
-            <svg width="30px" height="30px">
+            <svg>
               <use href="./img/symbol-defs.svg#menu-close"></use>
             </svg>
           </button>
@@ -596,7 +596,38 @@
     </div>
     <div class="backdrop modal-hidden" data-img-modal>
       <div class="modal-wrapper" data-mod-close-trigger="img-close">
-        <img class="modal-image" src="" />
+        <button
+          type="button"
+          class="modal-close-btn"
+          data-mod-close-trigger="img-close"
+        >
+          <svg>
+            <use href="./img/symbol-defs.svg#menu-close"></use>
+          </svg>
+        </button>
+        <button class="image-nav-arrow" data-modal-img-nav="prev">
+          <svg>
+            <use href="./img/symbol-defs.svg#arrow-left"></use>
+          </svg>
+        </button>
+        <img class="modal-image" src="" data-index="" />
+        <button class="image-nav-arrow" data-modal-img-nav="next">
+          <svg>
+            <use href="./img/symbol-defs.svg#arrow-right"></use>
+          </svg>
+        </button>
+        <div class="mobile-image-nav">
+          <button class="image-nav-arrow" data-modal-img-nav="prev">
+            <svg>
+              <use href="./img/symbol-defs.svg#arrow-left"></use>
+            </svg>
+          </button>
+          <button class="image-nav-arrow" data-modal-img-nav="next">
+            <svg>
+              <use href="./img/symbol-defs.svg#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
     <div class="backdrop modal-hidden" data-upload-modal>
@@ -607,7 +638,7 @@
             class="modal-close-btn"
             data-mod-close-trigger="upload-close"
           >
-            <svg width="30px" height="30px">
+            <svg>
               <use href="./img/symbol-defs.svg#menu-close"></use>
             </svg>
           </button>
