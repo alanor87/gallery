@@ -2,7 +2,9 @@
 /*  GALLERY RENDERING FUNCTION */
 /* ----------------------------*/
 
-export default function galleryImgRender(imagesObjArray, renderTargetEl) {
+import { galleryPageRef } from "./DOMRefs";
+
+export default function galleryImgRender(imagesObjArray) {
     const imgRenderArray = imagesObjArray.map((el, index) => {
         return `<div class="gallery-page-wrap">
           <div class="gallery-page-img-wrap">
@@ -23,5 +25,5 @@ export default function galleryImgRender(imagesObjArray, renderTargetEl) {
           </div>
         </div>`;
     });
-    renderTargetEl.insertAdjacentHTML('afterbegin', imgRenderArray.join(''));
+  galleryPageRef.insertAdjacentHTML('afterbegin', imgRenderArray.join(''));
 };

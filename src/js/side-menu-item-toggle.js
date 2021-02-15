@@ -2,8 +2,9 @@
 /*  SIDE MENU ITEM OPEN/CLOSE TOGGLE FUNCTION */
 /* -------------------------------------------*/
 
+import {menuWrapRef} from "./DOMRefs";
+
 export default function sideMenuItemOpen(event) {
-    const menuWrapRef = document.querySelectorAll('.menu-item-wrap');
     if (!event.target.classList.contains('menu-cat-button')) return;
     const targetItem = event.target.nextElementSibling.classList;
     if (!targetItem.contains('isOpen')) {

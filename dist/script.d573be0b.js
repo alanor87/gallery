@@ -408,6 +408,35 @@ var _default = [{
   "download_url": "https://picsum.photos/id/1025/4951/3301"
 }];
 exports.default = _default;
+},{}],"js/DOMRefs.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.modalUploadRef = exports.modalImgWindowRef = exports.modalImgRef = exports.modalNavRef = exports.modalAuthRef = exports.backdropRef = exports.galleryPageRef = exports.menuWrapRef = void 0;
+
+/* -------------------------------------------*/
+
+/* --------------- DOM REFERENCES ------------*/
+
+/* -------------------------------------------*/
+var menuWrapRef = document.querySelectorAll('.menu-item-wrap');
+exports.menuWrapRef = menuWrapRef;
+var galleryPageRef = document.querySelector('.gallery-page');
+exports.galleryPageRef = galleryPageRef;
+var backdropRef = Array.from(document.querySelectorAll('.backdrop'));
+exports.backdropRef = backdropRef;
+var modalAuthRef = document.querySelector('[data-auth-modal]');
+exports.modalAuthRef = modalAuthRef;
+var modalNavRef = document.querySelector('[data-nav-modal]');
+exports.modalNavRef = modalNavRef;
+var modalImgRef = document.querySelector('.modal-image');
+exports.modalImgRef = modalImgRef;
+var modalImgWindowRef = document.querySelector('[data-img-modal]');
+exports.modalImgWindowRef = modalImgWindowRef;
+var modalUploadRef = document.querySelector('[data-upload-modal]');
+exports.modalUploadRef = modalUploadRef;
 },{}],"js/gallery-render.js":[function(require,module,exports) {
 "use strict";
 
@@ -416,20 +445,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = galleryImgRender;
 
+var _DOMRefs = require("./DOMRefs");
+
 /* ----------------------------*/
 
 /*  GALLERY RENDERING FUNCTION */
 
 /* ----------------------------*/
-function galleryImgRender(imagesObjArray, renderTargetEl) {
+function galleryImgRender(imagesObjArray) {
   var imgRenderArray = imagesObjArray.map(function (el, index) {
     return "<div class=\"gallery-page-wrap\">\n          <div class=\"gallery-page-img-wrap\">\n              <img\n                class=\"gallery-page-img\"\n                src=\"https://picsum.photos/id/".concat(el.id, "/250\"\n                srcset=\"https://picsum.photos/id/").concat(el.id, "/250 1x, https://picsum.photos/id/").concat(el.id, "/500 2x\"\n                alt=\"image\"\n                data-src=\"https://picsum.photos/id/").concat(el.id, "/1000\"\n                data-index=\"").concat(index, "\"\n              />\n          </div>\n          <div class=\"gallery-page-text\">\n            <h2 class=\"gallery-page-header\">").concat(el.author, "</h2>\n            <p class=\"gallery-page-paragraph\">\n              Lorem ipsum dolor sit amet, consectetur adipisicing elit.</br> Index : ").concat(index, ". \n            </p>\n          </div>\n        </div>");
   });
-  renderTargetEl.insertAdjacentHTML('afterbegin', imgRenderArray.join(''));
+
+  _DOMRefs.galleryPageRef.insertAdjacentHTML('afterbegin', imgRenderArray.join(''));
 }
 
 ;
-},{}],"js/night-mode-toggle.js":[function(require,module,exports) {
+},{"./DOMRefs":"js/DOMRefs.js"}],"js/night-mode-toggle.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -455,89 +487,134 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = sideMenuItemOpen;
 
+var _DOMRefs = require("./DOMRefs");
+
 /* -------------------------------------------*/
 
 /*  SIDE MENU ITEM OPEN/CLOSE TOGGLE FUNCTION */
 
 /* -------------------------------------------*/
 function sideMenuItemOpen(event) {
-  var menuWrapRef = document.querySelectorAll('.menu-item-wrap');
   if (!event.target.classList.contains('menu-cat-button')) return;
   var targetItem = event.target.nextElementSibling.classList;
 
   if (!targetItem.contains('isOpen')) {
-    menuWrapRef.forEach(function (item) {
+    _DOMRefs.menuWrapRef.forEach(function (item) {
       return item.classList.remove('isOpen');
     });
+
     targetItem.add('isOpen');
   } else targetItem.remove('isOpen');
 }
 
 ;
-},{}],"js/script.js":[function(require,module,exports) {
+},{"./DOMRefs":"js/DOMRefs.js"}],"js/specific-modal-window-handlers.js":[function(require,module,exports) {
 "use strict";
 
-require("../sass/main.scss");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.navToggleHandler = navToggleHandler;
+exports.authToggleHandler = authToggleHandler;
+exports.uploadToggleHandler = uploadToggleHandler;
+exports.imgToggleHandler = imgToggleHandler;
 
-var _imagesArray = _interopRequireDefault(require("./imagesArray.js"));
+var _DOMRefs = require("./DOMRefs");
 
-var _galleryRender = _interopRequireDefault(require("./gallery-render.js"));
+/* ----------------------------------------------------*/
 
-var _nightModeToggle = _interopRequireDefault(require("./night-mode-toggle.js"));
+/*  SPECIFIC MODAL WINDOWS OPEN/CLOSE TOGGLE FUNCTIONS */
 
-var _sideMenuItemToggle = _interopRequireDefault(require("./side-menu-item-toggle"));
+/* ----------------------------------------------------*/
+function navToggleHandler() {
+  _DOMRefs.modalNavRef.classList.toggle("modal-hidden");
+}
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+;
 
-var modalOpenTriggersRef = Array.from(document.querySelectorAll("[data-mod-open-trigger]"));
-var modalCloseTriggersRef = Array.from(document.querySelectorAll("[data-mod-close-trigger]"));
-var modalAuthRef = document.querySelector('[data-auth-modal]');
-var modalImgWindowRef = document.querySelector('[data-img-modal]');
-var modalUploadRef = document.querySelector('[data-upload-modal]');
-var modalNavRef = document.querySelector('[data-nav-modal]');
-var modalImgRef = document.querySelector('.modal-image');
-var modalImgNav = document.querySelectorAll('.image-nav-arrow');
-var galleryPageRef = document.querySelector('.gallery-page');
-var galleryMenu = document.querySelector('.gallery-menu');
-var menuListItem = document.querySelector('.gallery-menu');
-var nightModeSwitch = document.querySelector('.nightMode-checkbox');
-var sideMenuSwitch = document.querySelector('.sideMenu-checkbox');
+function authToggleHandler() {
+  _DOMRefs.modalAuthRef.classList.toggle("modal-hidden");
+}
+
+;
+
+function uploadToggleHandler() {
+  _DOMRefs.modalUploadRef.classList.toggle("modal-hidden");
+}
+
+;
+
+function imgToggleHandler(event) {
+  var target = event.target;
+
+  if (event === 'close') {
+    _DOMRefs.modalImgWindowRef.classList.toggle("modal-hidden");
+
+    _DOMRefs.modalImgRef.src = '';
+    return;
+  }
+
+  ;
+
+  if (target.classList.contains('gallery-page-img')) {
+    _DOMRefs.modalImgRef.src = target.dataset.src;
+    _DOMRefs.modalImgRef.dataset.index = target.dataset.index;
+
+    _DOMRefs.modalImgWindowRef.classList.toggle("modal-hidden");
+  }
+
+  ;
+}
+
+;
+},{"./DOMRefs":"js/DOMRefs.js"}],"js/basic-modal-windows-handler.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.openModal = openModal;
+exports.closeModal = closeModal;
+
+var _DOMRefs = require("./DOMRefs");
+
+var _specificModalWindowHandlers = require("./specific-modal-window-handlers");
+
 /* ------------------------------------------*/
 
 /*  MODAL WINDOW OPEN/CLOSE TRIGGER HANDLERS */
 
 /* ------------------------------------------*/
-
 function openModal(event) {
-  var backdropRef = Array.from(document.querySelectorAll('.backdrop'));
   var role = event.currentTarget.dataset.modOpenTrigger;
-  backdropRef.forEach(function (backdrop) {
+
+  _DOMRefs.backdropRef.forEach(function (backdrop) {
     return backdrop.classList.add('modal-hidden');
   });
 
   switch (role) {
     case 'nav-open':
       {
-        navToggleHandler();
+        (0, _specificModalWindowHandlers.navToggleHandler)();
         break;
       }
 
     case 'auth-open':
       {
-        authToggleHandler();
+        (0, _specificModalWindowHandlers.authToggleHandler)();
         break;
       }
 
     case 'img-open':
       {
-        imgToggleHandler(event);
+        (0, _specificModalWindowHandlers.imgToggleHandler)(event);
         break;
       }
 
     case 'upload-open':
       {
         event.preventDefault();
-        uploadToggleHandler();
+        (0, _specificModalWindowHandlers.uploadToggleHandler)();
         break;
       }
   }
@@ -552,82 +629,50 @@ function closeModal(event) {
   switch (role) {
     case 'nav-close':
       {
-        navToggleHandler();
+        (0, _specificModalWindowHandlers.navToggleHandler)();
         break;
       }
 
     case 'auth-close':
       {
-        authToggleHandler();
+        (0, _specificModalWindowHandlers.authToggleHandler)();
         break;
       }
 
     case 'upload-close':
       {
-        uploadToggleHandler();
+        (0, _specificModalWindowHandlers.uploadToggleHandler)();
         break;
       }
 
     case 'img-close':
       {
-        imgToggleHandler('close');
+        (0, _specificModalWindowHandlers.imgToggleHandler)('close');
         break;
       }
   }
 }
 
 ;
-/* ----------------------------------------------------*/
+},{"./DOMRefs":"js/DOMRefs.js","./specific-modal-window-handlers":"js/specific-modal-window-handlers.js"}],"js/modal-image-nav.js":[function(require,module,exports) {
+"use strict";
 
-/*  SPECIFIC MODAL WINDOWS OPEN/CLOSE TOGGLE FUNCTIONS */
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.modalImgTriggerHandler = modalImgTriggerHandler;
 
-/* ----------------------------------------------------*/
+var _imagesArray = _interopRequireDefault(require("./imagesArray.js"));
 
-function navToggleHandler() {
-  modalNavRef.classList.toggle("modal-hidden");
-}
+var _DOMRefs = require("./DOMRefs");
 
-;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function authToggleHandler() {
-  modalAuthRef.classList.toggle("modal-hidden");
-}
-
-;
-
-function uploadToggleHandler() {
-  modalUploadRef.classList.toggle("modal-hidden");
-}
-
-;
-
-function imgToggleHandler(event) {
-  var target = event.target;
-
-  if (event === 'close') {
-    modalImgWindowRef.classList.toggle("modal-hidden");
-    modalImgRef.src = '';
-    return;
-  }
-
-  ;
-
-  if (target.classList.contains('gallery-page-img')) {
-    modalImgRef.src = target.dataset.src;
-    modalImgRef.dataset.index = target.dataset.index;
-    modalImgWindowRef.classList.toggle("modal-hidden");
-  }
-
-  ;
-}
-
-;
 /* -------------------------------------------*/
 
 /* --------- MODAL IMAAGE NAVIGATION ---------*/
 
 /* -------------------------------------------*/
-
 function modalImgTriggerHandler(event) {
   var direction = event.target.dataset.modalImgNav;
 
@@ -643,29 +688,54 @@ function modalImgTriggerHandler(event) {
 }
 
 function modalImageNav(indexShift) {
-  var currentIndex = Number(modalImgRef.dataset.index);
+  var currentIndex = Number(_DOMRefs.modalImgRef.dataset.index);
   var nextIndex = currentIndex + indexShift;
   if (nextIndex < 0 || nextIndex >= _imagesArray.default.length) return;
-  modalImgRef.src = "https://picsum.photos/id/".concat(_imagesArray.default[nextIndex].id, "/1000");
-  modalImgRef.dataset.index = nextIndex;
+  _DOMRefs.modalImgRef.src = "https://picsum.photos/id/".concat(_imagesArray.default[nextIndex].id, "/1000");
+  _DOMRefs.modalImgRef.dataset.index = nextIndex;
 }
+},{"./imagesArray.js":"js/imagesArray.js","./DOMRefs":"js/DOMRefs.js"}],"js/script.js":[function(require,module,exports) {
+"use strict";
 
-(0, _galleryRender.default)(_imagesArray.default, galleryPageRef);
+require("../sass/main.scss");
+
+var _imagesArray = _interopRequireDefault(require("./imagesArray.js"));
+
+var _galleryRender = _interopRequireDefault(require("./gallery-render.js"));
+
+var _nightModeToggle = _interopRequireDefault(require("./night-mode-toggle.js"));
+
+var _sideMenuItemToggle = _interopRequireDefault(require("./side-menu-item-toggle"));
+
+var _basicModalWindowsHandler = require("./basic-modal-windows-handler");
+
+var _modalImageNav = require("./modal-image-nav");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var modalOpenTriggersRef = Array.from(document.querySelectorAll("[data-mod-open-trigger]"));
+var modalCloseTriggersRef = Array.from(document.querySelectorAll("[data-mod-close-trigger]"));
+var modalImgNav = document.querySelectorAll('.image-nav-arrow');
+var galleryMenu = document.querySelector('.gallery-menu');
+var menuListItem = document.querySelector('.gallery-menu');
+var nightModeSwitch = document.querySelector('.nightMode-checkbox');
+var sideMenuSwitch = document.querySelector('.sideMenu-checkbox');
+(0, _galleryRender.default)(_imagesArray.default);
 nightModeSwitch.addEventListener('change', _nightModeToggle.default);
 sideMenuSwitch.addEventListener('change', function () {
   galleryMenu.classList.toggle('is-hidden');
 });
 menuListItem.addEventListener('click', _sideMenuItemToggle.default);
 modalOpenTriggersRef.forEach(function (item) {
-  return item.addEventListener("click", openModal);
+  return item.addEventListener("click", _basicModalWindowsHandler.openModal);
 });
 modalCloseTriggersRef.forEach(function (item) {
-  return item.addEventListener("click", closeModal);
+  return item.addEventListener("click", _basicModalWindowsHandler.closeModal);
 });
 modalImgNav.forEach(function (item) {
-  return item.addEventListener("click", modalImgTriggerHandler);
+  return item.addEventListener("click", _modalImageNav.modalImgTriggerHandler);
 });
-},{"../sass/main.scss":"sass/main.scss","./imagesArray.js":"js/imagesArray.js","./gallery-render.js":"js/gallery-render.js","./night-mode-toggle.js":"js/night-mode-toggle.js","./side-menu-item-toggle":"js/side-menu-item-toggle.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../sass/main.scss":"sass/main.scss","./imagesArray.js":"js/imagesArray.js","./gallery-render.js":"js/gallery-render.js","./night-mode-toggle.js":"js/night-mode-toggle.js","./side-menu-item-toggle":"js/side-menu-item-toggle.js","./basic-modal-windows-handler":"js/basic-modal-windows-handler.js","./modal-image-nav":"js/modal-image-nav.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -693,7 +763,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49817" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50739" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
