@@ -1,0 +1,30 @@
+{
+  "name": "gallery",
+  "version": "1.0.0",
+  "description": "https://alanor87.github.io/gallery/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel ./src/index.html -p 5050",
+    "build": "parcel build ./src/index.html --public-url ./",
+    "deploy": "parcel build ./src/index.html gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanor87/gallery.git"
+  },
+  "keywords": [],
+  "author": "alanor <jonny.freeman@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alanor87/gallery/issues"
+  },
+  "homepage": "https://github.com/alanor87/gallery#readme",
+  "dependencies": {
+    "gh-pages": "^3.1.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.32.7"
+  }
+}

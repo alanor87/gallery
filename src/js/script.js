@@ -1,5 +1,9 @@
 
-import imagesObjArray from "./imagesArray.js"
+import "../sass/main.scss";
+import imagesObjArray from "./imagesArray.js";
+import galleryImgRender from "./gallery-render.js";
+import nightModeToggle from "./night-mode-toggle.js";
+import sideMenuItemOpen from "./side-menu-item-toggle";
 
 const modalOpenTriggersRef = Array.from(document.querySelectorAll("[data-mod-open-trigger]"));
 const modalCloseTriggersRef = Array.from(document.querySelectorAll("[data-mod-close-trigger]"));
@@ -11,46 +15,17 @@ const modalImgRef = document.querySelector('.modal-image');
 const modalImgNav = document.querySelectorAll('.image-nav-arrow')
 const galleryPageRef = document.querySelector('.gallery-page');
 const galleryMenu = document.querySelector('.gallery-menu');
-const backdropRef = Array.from(document.querySelectorAll('.backdrop'));
-const menuWrapRef = document.querySelectorAll('.menu-item-wrap');
 const menuListItem = document.querySelector('.gallery-menu');
 const nightModeSwitch = document.querySelector('.nightMode-checkbox');
 const sideMenuSwitch = document.querySelector('.sideMenu-checkbox');
 
-
-/* ----------------------------*/
-/*  GALLERY RENDERING FUNCTION */
-/* ----------------------------*/
-
-function galleryImgRender(imagesObjArray) {
-  const imgRenderArray = imagesObjArray.map((el, index) => {
-    return `<div class="gallery-page-wrap">
-          <div class="gallery-page-img-wrap">
-              <img
-                class="gallery-page-img"
-                src="https://picsum.photos/id/${el.id}/250"
-                srcset="https://picsum.photos/id/${el.id}/250 1x, https://picsum.photos/id/${el.id}/500 2x"
-                alt="image"
-                data-src="https://picsum.photos/id/${el.id}/1000"
-                data-index="${index}"
-              />
-          </div>
-          <div class="gallery-page-text">
-            <h2 class="gallery-page-header">${el.author}</h2>
-            <p class="gallery-page-paragraph">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.</br> Index : ${index}. 
-            </p>
-          </div>
-        </div>`;
-  });
-  galleryPageRef.insertAdjacentHTML('afterbegin', imgRenderArray.join(''));
-};
 
 /* ------------------------------------------*/
 /*  MODAL WINDOW OPEN/CLOSE TRIGGER HANDLERS */
 /* ------------------------------------------*/
 
 function openModal(event) {
+  const backdropRef = Array.from(document.querySelectorAll('.backdrop'));
   const role = event.currentTarget.dataset.modOpenTrigger;
   backdropRef.forEach(backdrop => backdrop.classList.add('modal-hidden'));
   switch (role) {
@@ -73,7 +48,8 @@ function openModal(event) {
     }
   }
 };
-function closeModal(event) {
+
+ function closeModal(event) {
   const role = event.currentTarget.dataset.modCloseTrigger;
   if (event.target !== event.currentTarget) return;
   switch (role) {
@@ -82,17 +58,14 @@ function closeModal(event) {
       break;
     }
     case 'auth-close': {
-      console.log(role);
       authToggleHandler();
       break;
     }
     case 'upload-close': {
-      console.log(role);
       uploadToggleHandler();
       break;
     }
     case 'img-close': {
-      console.log(role);
       imgToggleHandler('close');
       break;
     }
@@ -127,25 +100,20 @@ function imgToggleHandler(event) {
 };
 
 /* -------------------------------------------*/
-/*  SIDE MENU ITEM OPEN/CLOSE TOGGLE FUNCTION */
+/* --------- MODAL IMAAGE NAVIGATION ---------*/
 /* -------------------------------------------*/
 
-function sideMenuItemOpen(event) {
-  if (!event.target.classList.contains('menu-cat-button')) return;
-  const targetItem = event.target.nextElementSibling.classList;
-  if (!targetItem.contains('isOpen')) {
-    menuWrapRef.forEach(item => item.classList.remove('isOpen'));
-    targetItem.add('isOpen');
-  } else targetItem.remove('isOpen');
-};
-
-/* ----------------------------*/
-/*  NIGHT MODE TOGGLE FUNCTION */
-/* ----------------------------*/
-
-function nightModeToggle() {
-  document.querySelector('body').classList.toggle('light-theme');
-};
+ function modalImgTriggerHandler(event) {
+  const direction = event.target.dataset.modalImgNav;
+  switch (direction) {
+    case 'prev':
+      modalImageNav(-1);
+      break;
+    case 'next':
+      modalImageNav(1);
+      break;
+  }
+}
 
 function modalImageNav(indexShift) {
   const currentIndex = Number(modalImgRef.dataset.index);
@@ -155,20 +123,8 @@ function modalImageNav(indexShift) {
   modalImgRef.dataset.index = nextIndex;
 }
 
-function modalImgTriggerHandler(event) {
-  const direction = event.target.dataset.modalImgNav;
-  switch (direction) {
-    case 'prev':
-      modalImageNav(-1);
-      break;
-    case 'next':
-       modalImageNav(1);
-      break;
-  }
-}
+galleryImgRender(imagesObjArray, galleryPageRef);
 
-
-galleryImgRender(imagesObjArray);
 nightModeSwitch.addEventListener('change', nightModeToggle);
 sideMenuSwitch.addEventListener('change', () => { galleryMenu.classList.toggle('is-hidden') });
 menuListItem.addEventListener('click', sideMenuItemOpen);

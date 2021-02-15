@@ -42,7 +42,7 @@
 
 body {
   background-color: var(--main-background-color);
-  font-family: 'Piazzolla';
+  font-family: "Piazzolla";
   color: var(--main-text-color);
   padding-top: 40px;
   transition: background-color 350ms linear, color 350ms linear;
@@ -61,7 +61,6 @@ a {
   color: var(--main-text-color);
   transition: color 250ms linear;
 }
-
 a:hover, a:focus {
   color: var(--color-accent);
 }
@@ -93,7 +92,6 @@ svg {
   justify-content: space-between;
   align-items: center;
 }
-
 @media screen and (min-width: 600px) {
   .nav {
     justify-content: space-around;
@@ -109,7 +107,6 @@ svg {
 .nav-login-list {
   display: none;
 }
-
 @media screen and (min-width: 600px) {
   .nav-login-list {
     display: flex;
@@ -129,9 +126,8 @@ svg {
   font-size: 16px;
   font-weight: 400;
 }
-
 .nav-list-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0px;
   display: block;
@@ -142,7 +138,6 @@ svg {
   opacity: 0;
   transition: opacity 250ms linear;
 }
-
 .nav-list-link:hover::after, .nav-list-link:focus::after {
   opacity: 1;
 }
@@ -158,7 +153,6 @@ svg {
   color: var(--main-text-color);
   transition: color 250ms linear, border-color 250ms linear;
 }
-
 .button-login-register:hover, .button-login-register:focus {
   color: var(--color-accent);
   border-color: var(--color-accent);
@@ -171,13 +165,11 @@ svg {
   background-color: transparent;
   cursor: pointer;
 }
-
 @media screen and (min-width: 600px) {
   .header-menu-button {
     display: none;
   }
 }
-
 .header-menu-button svg {
   fill: var(--main-text-color);
   pointer-events: none;
@@ -204,7 +196,6 @@ svg {
 .gallery-menu {
   display: none;
 }
-
 @media screen and (min-width: 600px) {
   .gallery-menu {
     display: block;
@@ -215,30 +206,24 @@ svg {
     padding: 20px 15px;
   }
 }
-
 .gallery-menu *::-webkit-scrollbar {
   width: 0;
 }
-
 .gallery-menu::-webkit-scrollbar {
   width: 0;
 }
-
 .gallery-menu-list {
   list-style: none;
   padding: 15px;
 }
-
 .gallery-menu-item {
   position: relative;
 }
-
 .gallery-menu-item:not(:last-child) {
   margin-bottom: 30px;
 }
-
 .gallery-menu-item:not(:last-child)::after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   left: 50%;
@@ -247,7 +232,6 @@ svg {
   background-color: var(--main-text-color);
   z-index: -1;
 }
-
 .gallery-menu-thumb {
   background-color: var(--main-background-color);
   border: 1px solid var(--color-border-main);
@@ -258,7 +242,6 @@ svg {
   border-radius: 10px;
   transition: border-color 250ms linear, transform 250ms linear;
 }
-
 .gallery-menu-thumb:hover {
   border-color: var(--color-accent);
   transform: scale(1.1);
@@ -282,7 +265,6 @@ svg {
   overflow: hidden;
   transition: height 250ms linear;
 }
-
 .menu-item-wrap.isOpen {
   height: 100%;
   overflow-y: auto;
@@ -297,13 +279,11 @@ svg {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
 @media screen and (min-width: 1200px) {
   .gallery-page {
     justify-content: flex-start;
   }
 }
-
 .gallery-page-wrap {
   background-color: var(--main-background-color);
   border: 1px solid var(--color-border-main);
@@ -317,18 +297,15 @@ svg {
   overflow: hidden;
   cursor: pointer;
 }
-
 .gallery-page-wrap:hover .gallery-page-text {
   opacity: 1;
   transform: translateY(0);
 }
-
 .gallery-page-img {
   width: 100%;
   min-width: 250px;
   height: auto;
 }
-
 .gallery-page-text {
   position: absolute;
   bottom: 0;
@@ -340,24 +317,21 @@ svg {
   transform: translateY(20px);
   transition: transform 250ms linear, opacity 250ms linear;
 }
-
 .gallery-page-header {
   text-align: center;
   font-size: 20px;
 }
-
 .gallery-page-header::after {
-  content: '';
+  content: "";
   display: block;
   margin: auto;
   height: 15px;
   width: 50px;
-  background-image: url("../img/tilde.svg");
+  background-image: url("/tilde.03376d1c.svg");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-
 .gallery-page-paragraph {
   text-indent: 1em;
   font-size: 15px;
@@ -374,7 +348,6 @@ svg {
   transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0ms linear 0ms;
   z-index: 20;
 }
-
 .backdrop.modal-hidden {
   pointer-events: none;
   visibility: hidden;
@@ -403,13 +376,11 @@ svg {
   transition: color 250ms linear, border-color 250ms linear;
   color: var(--main-text-color);
 }
-
 .modal-close-btn:hover, .modal-close-btn:focus {
   color: var(--color-accent);
   border-color: var(--color-accent);
   outline: none;
 }
-
 .modal-close-btn svg {
   width: 50px;
   height: 50px;
@@ -423,19 +394,16 @@ svg {
   background-color: transparent;
   color: #bebebe;
 }
-
 @media screen and (min-width: 600px) {
   .image-nav-arrow {
     display: block;
   }
 }
-
 .image-nav-arrow svg {
   fill: currentColor;
   height: 60px;
   width: 90px;
 }
-
 .image-nav-arrow:hover, .image-nav-arrow:focus {
   color: var(--color-accent);
 }
@@ -448,13 +416,11 @@ svg {
   justify-content: space-around;
   align-items: center;
 }
-
 @media screen and (min-width: 600px) {
   .mobile-image-nav {
     display: none;
   }
 }
-
 .mobile-image-nav .image-nav-arrow {
   display: block;
 }
@@ -469,7 +435,6 @@ svg {
   width: 100%;
   max-width: 450px;
 }
-
 .modal-auth-form h2 {
   text-align: center;
   margin-bottom: 20px;
@@ -483,13 +448,11 @@ svg {
   margin-bottom: 20px;
   color: var(--color-accent);
 }
-
 @media screen and (max-width: 400px) {
   .label-authorisation {
     flex-direction: column;
   }
 }
-
 .label-authorisation input {
   background-color: var(--main-background-color);
   border: 1px solid var(--color-border-main);
@@ -501,13 +464,11 @@ svg {
   color: var(--main-text-color);
   transition: color 250ms linear, border-color 250ms linear;
 }
-
 @media screen and (max-width: 400px) {
   .label-authorisation input {
     margin-top: 10px;
   }
 }
-
 .label-authorisation input:focus {
   border-color: var(--color-accent);
   outline: none;
@@ -524,7 +485,6 @@ svg {
   text-align: center;
   transition: color 250ms linear, border-color 250ms linear;
 }
-
 .modal-auth-form-button:hover, .modal-auth-form-button:focus {
   color: var(--color-accent);
   border-color: var(--color-accent);
@@ -534,7 +494,6 @@ svg {
   width: 100%;
   height: auto;
 }
-
 @media screen and (min-width: 600px) {
   .modal-image {
     height: 100%;
@@ -553,12 +512,10 @@ svg {
 .modal-nav-list-item {
   margin-bottom: 30px;
 }
-
 .modal-nav-list-item .nav-list-link {
   color: #bebebe;
   font-size: 20px;
 }
-
 .modal-nav-list-item .button-login-register {
   padding: 10px 15px;
   font-size: 20px;
@@ -596,7 +553,6 @@ svg {
   border-radius: 25px;
   box-shadow: 0 0 1px 0px #000000, inset 0 0 12px 1px #000000;
 }
-
 .inner-frame::after {
   content: "";
   position: absolute;
@@ -620,7 +576,6 @@ svg {
   transition: transform 250ms linear;
   z-index: 1;
 }
-
 .toggle-button::after {
   content: "";
   position: absolute;
@@ -632,7 +587,6 @@ svg {
   background-image: linear-gradient(to bottom, #000000, #363636 66%, #5c5c5c);
   transition: box-shadow 250ms linear;
 }
-
 .toggle-button::before {
   content: "";
   position: absolute;
@@ -650,15 +604,12 @@ svg {
   box-shadow: inset 0 0 12px 0px #000000;
   background-color: var(--color-accent);
 }
-
 .toggle-checkbox:checked ~ .inner-frame .toggle-button {
   transform: translateX(33%);
 }
-
 .toggle-checkbox:checked ~ .inner-frame .toggle-button::after {
   box-shadow: 0 0 5px 1px var(--color-accent);
 }
-
 .toggle-checkbox:checked ~ .inner-frame .toggle-button::before {
   background-color: var(--color-accent);
   box-shadow: inset 0 0 1px 0 #000000;
@@ -667,7 +618,6 @@ svg {
 .side-menu.toggle-element {
   display: none;
 }
-
 @media screen and (min-width: 600px) {
   .side-menu.toggle-element {
     display: flex;
@@ -682,17 +632,15 @@ svg {
   box-shadow: inset 0 0 12px 0px #000000;
   background-color: var(--color-accent);
 }
-
 .sideMenu-checkbox:checked ~ .inner-frame .toggle-button {
   transform: translateX(0);
 }
-
 .sideMenu-checkbox:checked ~ .inner-frame .toggle-button::after {
   box-shadow: 0 0 5px 1px var(--color-accent);
 }
-
 .sideMenu-checkbox:checked ~ .inner-frame .toggle-button::before {
   background-color: var(--color-accent);
   box-shadow: inset 0 0 1px 0 #000000;
 }
-/*# sourceMappingURL=main.css.map */
+
+/*# sourceMappingURL=/script.d573be0b.css.map */
