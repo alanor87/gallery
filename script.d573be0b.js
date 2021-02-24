@@ -414,7 +414,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.modalUploadRef = exports.modalImgWindowRef = exports.modalImgRef = exports.modalNavRef = exports.modalAuthRef = exports.backdropRef = exports.galleryPageRef = exports.menuWrapRef = void 0;
+exports.galleryMenuRef = exports.modalUploadRef = exports.modalImgWindowRef = exports.modalImgRef = exports.modalNavRef = exports.modalAuthRef = exports.backdropRef = exports.galleryPageRef = exports.menuWrapRef = void 0;
 
 /* -------------------------------------------*/
 
@@ -437,6 +437,8 @@ var modalImgWindowRef = document.querySelector('[data-img-modal]');
 exports.modalImgWindowRef = modalImgWindowRef;
 var modalUploadRef = document.querySelector('[data-upload-modal]');
 exports.modalUploadRef = modalUploadRef;
+var galleryMenuRef = document.querySelector('.gallery-menu');
+exports.galleryMenuRef = galleryMenuRef;
 },{}],"js/gallery-render.js":[function(require,module,exports) {
 "use strict";
 
@@ -694,7 +696,25 @@ function modalImageNav(indexShift) {
   _DOMRefs.modalImgRef.src = "https://picsum.photos/id/".concat(_imagesArray.default[nextIndex].id, "/1000");
   _DOMRefs.modalImgRef.dataset.index = nextIndex;
 }
-},{"./imagesArray.js":"js/imagesArray.js","./DOMRefs":"js/DOMRefs.js"}],"js/script.js":[function(require,module,exports) {
+},{"./imagesArray.js":"js/imagesArray.js","./DOMRefs":"js/DOMRefs.js"}],"js/gallery-menu-toggle.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = galleryMenuToggle;
+
+var _DOMRefs = require("./DOMRefs");
+
+/* -------------------------------------------*/
+
+/* ----- GALLERY MENU OPEN'CLOSE TOGGLE ------*/
+
+/* -------------------------------------------*/
+function galleryMenuToggle() {
+  _DOMRefs.galleryMenuRef.classList.toggle('isOpen');
+}
+},{"./DOMRefs":"js/DOMRefs.js"}],"js/script.js":[function(require,module,exports) {
 "use strict";
 
 require("../sass/main.scss");
@@ -711,20 +731,19 @@ var _basicModalWindowsHandler = require("./basic-modal-windows-handler");
 
 var _modalImageNav = require("./modal-image-nav");
 
+var _galleryMenuToggle = _interopRequireDefault(require("./gallery-menu-toggle"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var modalOpenTriggersRef = Array.from(document.querySelectorAll("[data-mod-open-trigger]"));
 var modalCloseTriggersRef = Array.from(document.querySelectorAll("[data-mod-close-trigger]"));
 var modalImgNav = document.querySelectorAll('.image-nav-arrow');
-var galleryMenu = document.querySelector('.gallery-menu');
 var menuListItem = document.querySelector('.gallery-menu');
 var nightModeSwitch = document.querySelector('.nightMode-checkbox');
 var sideMenuSwitch = document.querySelector('.sideMenu-checkbox');
 (0, _galleryRender.default)(_imagesArray.default);
 nightModeSwitch.addEventListener('change', _nightModeToggle.default);
-sideMenuSwitch.addEventListener('change', function () {
-  galleryMenu.classList.toggle('is-hidden');
-});
+sideMenuSwitch.addEventListener('change', _galleryMenuToggle.default);
 menuListItem.addEventListener('click', _sideMenuItemToggle.default);
 modalOpenTriggersRef.forEach(function (item) {
   return item.addEventListener("click", _basicModalWindowsHandler.openModal);
@@ -735,7 +754,7 @@ modalCloseTriggersRef.forEach(function (item) {
 modalImgNav.forEach(function (item) {
   return item.addEventListener("click", _modalImageNav.modalImgTriggerHandler);
 });
-},{"../sass/main.scss":"sass/main.scss","./imagesArray.js":"js/imagesArray.js","./gallery-render.js":"js/gallery-render.js","./night-mode-toggle.js":"js/night-mode-toggle.js","./side-menu-item-toggle":"js/side-menu-item-toggle.js","./basic-modal-windows-handler":"js/basic-modal-windows-handler.js","./modal-image-nav":"js/modal-image-nav.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../sass/main.scss":"sass/main.scss","./imagesArray.js":"js/imagesArray.js","./gallery-render.js":"js/gallery-render.js","./night-mode-toggle.js":"js/night-mode-toggle.js","./side-menu-item-toggle":"js/side-menu-item-toggle.js","./basic-modal-windows-handler":"js/basic-modal-windows-handler.js","./modal-image-nav":"js/modal-image-nav.js","./gallery-menu-toggle":"js/gallery-menu-toggle.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -763,7 +782,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50739" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57243" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
