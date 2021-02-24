@@ -10,3 +10,4 @@ export const modalNavRef = document.querySelector('[data-nav-modal]');
 export const modalImgRef = document.querySelector('.modal-image');
 export const modalImgWindowRef = document.querySelector('[data-img-modal]');
 export const modalUploadRef = document.querySelector('[data-upload-modal]');
+export const galleryMenuRef = document.querySelector('.gallery-menu');

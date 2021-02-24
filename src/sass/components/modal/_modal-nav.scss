@@ -16,3 +16,38 @@
     color: rgb(190, 190, 190);
   }
 }
+
+.image-nav-arrow {
+  display: none;
+  border: none;
+  background-color: transparent;
+  color: rgb(190, 190, 190);
+  transition: color 250ms linear;
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: block;
+  }
+  & svg {
+    fill: currentColor;
+    height: 60px;
+    width: 90px;
+  }
+  &:hover,
+  &:focus {
+    color: var(--color-accent);
+  }
+}
+
+.mobile-image-nav {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: none;
+  }
+  & .image-nav-arrow {
+    display: block;
+  }
+}

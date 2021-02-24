@@ -1,20 +1,32 @@
 .gallery-menu {
+  scrollbar-width: none;
   display: none;
+  pointer-events: none;
   @media screen and (min-width: $breakpoint-mobile) {
     display: block;
+    position: absolute;
     width: 180px;
-    flex-shrink: 0;
+    height: 94vh;
     overflow-y: auto;
     margin-right: 10px;
     padding: 20px 15px;
-  }
-
-  & *::-webkit-scrollbar {
-    width: 0;
+    background-image: linear-gradient(
+      to right,
+      var(--main-background-color),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 250ms linear, left 250ms linear 250ms;
+    z-index: 10;
   }
 
   &::-webkit-scrollbar {
     width: 0;
+  }
+
+  &.isOpen {
+    pointer-events: all;
+    opacity: 1;
   }
 
   &-list {
@@ -26,7 +38,7 @@
     position: relative;
   }
 
-  &-item:not(:last-child) {    
+  &-item:not(:last-child) {
     margin-bottom: 30px;
   }
 
@@ -56,12 +68,14 @@
     transform: scale(1.1);
   }
 }
+
+
 .menu-cat-button {
   display: block;
   width: 100%;
   padding: 5px;
   margin-bottom: 10px;
-  text-align: left;
+  text-align: center;
   color: $main-text-color;
   background-image: linear-gradient(
     to left,
@@ -71,14 +85,21 @@
   cursor: pointer;
   border: none;
 }
+
+
 .menu-item-wrap {
-  height: 0%;
+  height: 0;
   transform-origin: top;
-  overflow: hidden;
+  overflow: hidden;  
+  scrollbar-width: none;
   transition: height 250ms linear;
 
   &.isOpen {
     height: 100%;
     overflow-y: auto;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
   }
 }
