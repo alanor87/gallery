@@ -26,4 +26,5 @@ export default function galleryImgRender(imagesObjArray) {
         </div>`;
     });
   galleryPageRef.insertAdjacentHTML('afterbegin', imgRenderArray.join(''));
+  return imgRenderArray.length;
 };
