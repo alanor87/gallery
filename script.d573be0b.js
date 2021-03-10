@@ -313,8 +313,6 @@ var _DOMRefs = require("./DOMRefs");
 function themeLoadHandler() {
   switch (localStorage.getItem('theme')) {
     case 'light':
-      console.log('ddddd');
-
       _DOMRefs.bodyRef.classList.add('light-theme');
 
       _DOMRefs.nightModeSwitch.checked = true;
@@ -645,7 +643,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49252" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50732" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
