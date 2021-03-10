@@ -1,9 +1,8 @@
 /* -------------------------------------------*/
 /* --------- MODAL IMAAGE NAVIGATION ---------*/
 /* -------------------------------------------*/
-import { currentImgArray } from "./globalVar";
+import { currentImgArray, imgPerPage } from "./globalVar";
 import { modalImgRef } from "./DOMRefs";
-import {imgPerPage} from "./globalVar";
 
 export function modalImgTriggerHandler(event) {
     const direction = event.target.dataset.modalImgNav;

@@ -1,14 +1,11 @@
 /* ----------------------------*/
 /*  NIGHT MODE TOGGLE FUNCTION */
 /* ----------------------------*/
-import { bodyRef } from "./DOMRefs";
-import { nightModeSwitch } from "./DOMRefs";
-
+import { bodyRef, nightModeSwitch } from "./DOMRefs";
 
 export function themeLoadHandler() {
     switch (localStorage.getItem('theme')) {
         case 'light':
-            console.log('ddddd');
             bodyRef.classList.add('light-theme');
             nightModeSwitch.checked = true;
             break;

@@ -13,3 +13,4 @@ export const modalImgWindowRef = document.querySelector('[data-img-modal]');
 export const modalUploadRef = document.querySelector('[data-upload-modal]');
 export const galleryMenuRef = document.querySelector('.gallery-menu');
 export const nightModeSwitch = document.querySelector('.nightMode-checkbox');
+

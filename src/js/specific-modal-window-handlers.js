@@ -2,11 +2,7 @@
 /*  SPECIFIC MODAL WINDOWS OPEN/CLOSE TOGGLE FUNCTIONS */
 /* ----------------------------------------------------*/
 
-import { modalNavRef } from "./DOMRefs";
-import { modalAuthRef } from "./DOMRefs";
-import { modalUploadRef } from "./DOMRefs";
-import { modalImgWindowRef } from "./DOMRefs";
-import { modalImgRef } from "./DOMRefs";
+import { modalNavRef, modalAuthRef, modalUploadRef, modalImgWindowRef, modalImgRef } from "./DOMRefs";
 
 export function navToggleHandler() {
     modalNavRef.classList.toggle("modal-hidden");

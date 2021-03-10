@@ -3,10 +3,7 @@
 /* ------------------------------------------*/
 
 import { backdropRef } from "./DOMRefs";
-import { navToggleHandler } from "./specific-modal-window-handlers";
-import { authToggleHandler } from "./specific-modal-window-handlers";
-import { imgToggleHandler } from "./specific-modal-window-handlers";
-import { uploadToggleHandler } from "./specific-modal-window-handlers";
+import { navToggleHandler, authToggleHandler, imgToggleHandler, uploadToggleHandler } from "./specific-modal-window-handlers";
 
 export function openModal(event) {
     const role = event.currentTarget.dataset.modOpenTrigger;

@@ -1,12 +1,10 @@
 
 import "../sass/main.scss";
-import { imgPerPage } from "./globalVar";
-import { currentImgArray } from "./globalVar";
+import { imgPerPage, currentImgArray } from "./globalVar";
 import { fetchImages } from './fetchImages';
 import { nightModeToggle, themeLoadHandler } from "./night-mode-toggle.js";
 import sideMenuItemOpen from "./side-menu-item-toggle";
-import { openModal } from "./basic-modal-windows-handler";
-import { closeModal } from "./basic-modal-windows-handler";
+import { openModal, closeModal } from "./basic-modal-windows-handler";
 import { modalImgTriggerHandler } from "./modal-image-nav";
 import galleryMenuToggle from "./gallery-menu-toggle";
 import { nightModeSwitch } from "./DOMRefs";
