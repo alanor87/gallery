@@ -189,24 +189,13 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\img\\tilde.svg":[["tilde.03376d1c.svg","img/tilde.svg"],"img/tilde.svg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/globalVar.js":[function(require,module,exports) {
+},{"./..\\img\\tilde.svg":[["tilde.03376d1c.svg","img/tilde.svg"],"img/tilde.svg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/DOMRefs.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.currentImgArray = exports.imgPerPage = void 0;
-var imgPerPage = 50;
-exports.imgPerPage = imgPerPage;
-var currentImgArray = [];
-exports.currentImgArray = currentImgArray;
-},{}],"js/DOMRefs.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.nightModeSwitch = exports.galleryMenuRef = exports.modalUploadRef = exports.modalImgWindowRef = exports.modalImgRef = exports.modalNavRef = exports.modalAuthRef = exports.backdropRef = exports.galleryPageRef = exports.menuWrapRef = exports.bodyRef = void 0;
+exports.intersectionAnchorGalleryRef = exports.nightModeSwitch = exports.galleryMenuRef = exports.modalUploadRef = exports.modalImgWindowRef = exports.modalImgRef = exports.modalNavRef = exports.modalAuthRef = exports.backdropRef = exports.galleryPageRef = exports.menuWrapRef = exports.bodyRef = void 0;
 
 /* -------------------------------------------*/
 
@@ -235,66 +224,9 @@ var galleryMenuRef = document.querySelector('.gallery-menu');
 exports.galleryMenuRef = galleryMenuRef;
 var nightModeSwitch = document.querySelector('.nightMode-checkbox');
 exports.nightModeSwitch = nightModeSwitch;
-},{}],"js/gallery-render.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = galleryImgRender;
-
-var _DOMRefs = require("./DOMRefs");
-
-/* ----------------------------*/
-
-/*  GALLERY RENDERING FUNCTION */
-
-/* ----------------------------*/
-function galleryImgRender(imagesObjArray) {
-  var imgRenderArray = imagesObjArray.map(function (el, index) {
-    return "<div class=\"gallery-page-wrap\">\n          <div class=\"gallery-page-img-wrap\">\n              <img\n                class=\"gallery-page-img\"\n                src=\"https://picsum.photos/id/".concat(el.id, "/250\"\n                srcset=\"https://picsum.photos/id/").concat(el.id, "/250 1x, https://picsum.photos/id/").concat(el.id, "/500 2x\"\n                alt=\"image\"\n                data-src=\"https://picsum.photos/id/").concat(el.id, "/1000\"\n                data-index=\"").concat(index, "\"\n              />\n          </div>\n          <div class=\"gallery-page-text\">\n            <h2 class=\"gallery-page-header\">").concat(el.author, "</h2>\n            <p class=\"gallery-page-paragraph\">\n              Lorem ipsum dolor sit amet, consectetur adipisicing elit.</br> Index : ").concat(index, ". \n            </p>\n          </div>\n        </div>");
-  });
-
-  _DOMRefs.galleryPageRef.insertAdjacentHTML('afterbegin', imgRenderArray.join(''));
-
-  return imgRenderArray.length;
-}
-
-;
-},{"./DOMRefs":"js/DOMRefs.js"}],"js/fetchImages.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.fetchImages = fetchImages;
-
-var _galleryRender = _interopRequireDefault(require("./gallery-render"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function fetchImages(imgPerPage, currentImgArray) {
-  return fetch("https://picsum.photos/v2/list?page=2&limit=".concat(imgPerPage)).then(function (responce) {
-    return responce.json();
-  }).then(function (responce) {
-    (0, _galleryRender.default)(responce);
-    currentImgArray.push.apply(currentImgArray, _toConsumableArray(responce));
-    console.log(currentImgArray);
-  });
-}
-},{"./gallery-render":"js/gallery-render.js"}],"js/night-mode-toggle.js":[function(require,module,exports) {
+var intersectionAnchorGalleryRef = document.querySelector('.intersection-anchor');
+exports.intersectionAnchorGalleryRef = intersectionAnchorGalleryRef;
+},{}],"js/night-mode-toggle.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -514,7 +446,20 @@ function closeModal(event) {
 }
 
 ;
-},{"./DOMRefs":"js/DOMRefs.js","./specific-modal-window-handlers":"js/specific-modal-window-handlers.js"}],"js/modal-image-nav.js":[function(require,module,exports) {
+},{"./DOMRefs":"js/DOMRefs.js","./specific-modal-window-handlers":"js/specific-modal-window-handlers.js"}],"js/globalVar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  imgPerPage: 20,
+  currentPage: 1,
+  currentImgArray: []
+};
+exports.default = _default;
+},{}],"js/modal-image-nav.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -522,9 +467,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.modalImgTriggerHandler = modalImgTriggerHandler;
 
-var _globalVar = require("./globalVar");
+var _globalVar = _interopRequireDefault(require("./globalVar"));
 
 var _DOMRefs = require("./DOMRefs");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* -------------------------------------------*/
 
@@ -532,6 +479,7 @@ var _DOMRefs = require("./DOMRefs");
 
 /* -------------------------------------------*/
 function modalImgTriggerHandler(event) {
+  console.log('click!');
   var direction = event.target.dataset.modalImgNav;
 
   switch (direction) {
@@ -548,9 +496,10 @@ function modalImgTriggerHandler(event) {
 function modalImageNav(indexShift) {
   var currentIndex = Number(_DOMRefs.modalImgRef.dataset.index);
   var nextIndex = currentIndex + indexShift;
-  if (nextIndex < 0 || nextIndex >= _globalVar.imgPerPage) return;
-  console.log(nextIndex + ' ' + _globalVar.imgPerPage);
-  _DOMRefs.modalImgRef.src = "https://picsum.photos/id/".concat(_globalVar.currentImgArray[nextIndex].id, "/1000");
+  var currentImgQuantity = _globalVar.default.currentImgArray.length;
+  if (nextIndex < 0 || nextIndex >= currentImgQuantity) return;
+  console.log(nextIndex + ' ' + currentImgQuantity);
+  _DOMRefs.modalImgRef.src = "https://picsum.photos/id/".concat(_globalVar.default.currentImgArray[nextIndex].id, "/1000");
   _DOMRefs.modalImgRef.dataset.index = nextIndex;
 }
 },{"./globalVar":"js/globalVar.js","./DOMRefs":"js/DOMRefs.js"}],"js/gallery-menu-toggle.js":[function(require,module,exports) {
@@ -571,14 +520,100 @@ var _DOMRefs = require("./DOMRefs");
 function galleryMenuToggle() {
   _DOMRefs.galleryMenuRef.classList.toggle('isOpen');
 }
-},{"./DOMRefs":"js/DOMRefs.js"}],"js/script.js":[function(require,module,exports) {
+},{"./DOMRefs":"js/DOMRefs.js"}],"js/gallery-render.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = galleryImgRender;
+
+var _DOMRefs = require("./DOMRefs");
+
+var _globalVar = _interopRequireDefault(require("./globalVar"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* ----------------------------*/
+
+/*  GALLERY RENDERING FUNCTION */
+
+/* ----------------------------*/
+function galleryImgRender(imagesObjArray) {
+  var imgRenderArray = imagesObjArray.map(function (el, index) {
+    var imgIndex = index + (_globalVar.default.currentPage - 1) * _globalVar.default.imgPerPage;
+    return "<div class=\"gallery-page-wrap\">\n          <div class=\"gallery-page-img-wrap\">\n              <img\n                class=\"gallery-page-img\"\n                src=\"https://picsum.photos/id/".concat(el.id, "/250\"\n                srcset=\"https://picsum.photos/id/").concat(el.id, "/250 1x, https://picsum.photos/id/").concat(el.id, "/500 2x\"\n                alt=\"image\"\n                data-src=\"https://picsum.photos/id/").concat(el.id, "/1000\"\n                data-index=\"").concat(imgIndex, "\"\n              />\n          </div>\n          <div class=\"gallery-page-text\">\n            <h2 class=\"gallery-page-header\">").concat(el.author, "</h2>\n            <p class=\"gallery-page-paragraph\">\n              Lorem ipsum dolor sit amet, consectetur adipisicing elit.</br> Index : ").concat(imgIndex, ".\n            </p>\n          </div>\n        </div>");
+  });
+
+  _DOMRefs.intersectionAnchorGalleryRef.insertAdjacentHTML('beforebegin', imgRenderArray.join(''));
+}
+
+;
+},{"./DOMRefs":"js/DOMRefs.js","./globalVar":"js/globalVar.js"}],"js/fetchImages.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchImages = fetchImages;
+
+var _galleryRender = _interopRequireDefault(require("./gallery-render"));
+
+var _globalVar = _interopRequireDefault(require("./globalVar"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function fetchImages() {
+  return fetch("https://picsum.photos/v2/list?page=".concat(_globalVar.default.currentPage, "&limit=").concat(_globalVar.default.imgPerPage)).then(function (responce) {
+    return responce.json();
+  }).then(function (responce) {
+    var _imgFetchOptions$curr;
+
+    (0, _galleryRender.default)(responce);
+    _globalVar.default.currentPage += 1;
+
+    (_imgFetchOptions$curr = _globalVar.default.currentImgArray).push.apply(_imgFetchOptions$curr, _toConsumableArray(responce));
+
+    console.log(_globalVar.default.currentImgArray);
+  });
+}
+},{"./gallery-render":"js/gallery-render.js","./globalVar":"js/globalVar.js"}],"js/intersection-observer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.infScrollObserver = void 0;
+
+var _DOMRefs = require("./DOMRefs");
+
+var _fetchImages = require("./fetchImages");
+
+var options = {
+  root: _DOMRefs.galleryPageRef,
+  rootMargin: '50px',
+  threshold: 1.0
+};
+var infScrollObserver = new IntersectionObserver(function (entries) {
+  if (entries[0].isIntersecting) (0, _fetchImages.fetchImages)();
+}, options);
+exports.infScrollObserver = infScrollObserver;
+},{"./DOMRefs":"js/DOMRefs.js","./fetchImages":"js/fetchImages.js"}],"js/script.js":[function(require,module,exports) {
 "use strict";
 
 require("../sass/main.scss");
-
-var _globalVar = require("./globalVar");
-
-var _fetchImages = require("./fetchImages");
 
 var _nightModeToggle = require("./night-mode-toggle.js");
 
@@ -592,6 +627,8 @@ var _galleryMenuToggle = _interopRequireDefault(require("./gallery-menu-toggle")
 
 var _DOMRefs = require("./DOMRefs");
 
+var _intersectionObserver = require("./intersection-observer");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var modalOpenTriggersRef = Array.from(document.querySelectorAll("[data-mod-open-trigger]"));
@@ -599,7 +636,6 @@ var modalCloseTriggersRef = Array.from(document.querySelectorAll("[data-mod-clos
 var modalImgNav = document.querySelectorAll('.image-nav-arrow');
 var menuListItem = document.querySelector('.gallery-menu');
 var sideMenuSwitch = document.querySelector('.sideMenu-checkbox');
-(0, _fetchImages.fetchImages)(_globalVar.imgPerPage, _globalVar.currentImgArray);
 window.addEventListener('DOMContentLoaded', _nightModeToggle.themeLoadHandler);
 
 _DOMRefs.nightModeSwitch.addEventListener('change', _nightModeToggle.nightModeToggle);
@@ -615,7 +651,9 @@ modalCloseTriggersRef.forEach(function (item) {
 modalImgNav.forEach(function (item) {
   return item.addEventListener("click", _modalImageNav.modalImgTriggerHandler);
 });
-},{"../sass/main.scss":"sass/main.scss","./globalVar":"js/globalVar.js","./fetchImages":"js/fetchImages.js","./night-mode-toggle.js":"js/night-mode-toggle.js","./side-menu-item-toggle":"js/side-menu-item-toggle.js","./basic-modal-windows-handler":"js/basic-modal-windows-handler.js","./modal-image-nav":"js/modal-image-nav.js","./gallery-menu-toggle":"js/gallery-menu-toggle.js","./DOMRefs":"js/DOMRefs.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+_intersectionObserver.infScrollObserver.observe(_DOMRefs.intersectionAnchorGalleryRef);
+},{"../sass/main.scss":"sass/main.scss","./night-mode-toggle.js":"js/night-mode-toggle.js","./side-menu-item-toggle":"js/side-menu-item-toggle.js","./basic-modal-windows-handler":"js/basic-modal-windows-handler.js","./modal-image-nav":"js/modal-image-nav.js","./gallery-menu-toggle":"js/gallery-menu-toggle.js","./DOMRefs":"js/DOMRefs.js","./intersection-observer":"js/intersection-observer.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -643,7 +681,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50732" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50300" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
