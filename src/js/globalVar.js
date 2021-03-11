@@ -1,2 +1,5 @@
-export let imgPerPage = 50;
-export const currentImgArray = [];
+export default {
+    imgPerPage: 20,
+    currentPage: 1,
+    currentImgArray: [],
+}

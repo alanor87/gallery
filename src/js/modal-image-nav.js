@@ -1,10 +1,11 @@
 /* -------------------------------------------*/
 /* --------- MODAL IMAAGE NAVIGATION ---------*/
 /* -------------------------------------------*/
-import { currentImgArray, imgPerPage } from "./globalVar";
+import imgFetchOptions from "./globalVar";
 import { modalImgRef } from "./DOMRefs";
 
 export function modalImgTriggerHandler(event) {
+    console.log('click!');
     const direction = event.target.dataset.modalImgNav;
     switch (direction) {
         case 'prev':
@@ -19,8 +20,9 @@ export function modalImgTriggerHandler(event) {
 function modalImageNav(indexShift) {
     const currentIndex = Number(modalImgRef.dataset.index);
     const nextIndex = currentIndex + indexShift;
-    if (nextIndex < 0 || nextIndex >= imgPerPage) return;
-    console.log(nextIndex + ' ' + imgPerPage);
-    modalImgRef.src = `https://picsum.photos/id/${currentImgArray[nextIndex].id}/1000`;
+    const currentImgQuantity = imgFetchOptions.currentImgArray.length;
+    if (nextIndex < 0 || nextIndex >= currentImgQuantity) return;
+    console.log(nextIndex + ' ' + currentImgQuantity);
+    modalImgRef.src = `https://picsum.photos/id/${imgFetchOptions.currentImgArray[nextIndex].id}/1000`;
     modalImgRef.dataset.index = nextIndex;
 }

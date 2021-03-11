@@ -2,15 +2,21 @@
 /* --------------- DOM REFERENCES ------------*/
 /* -------------------------------------------*/
 
-export const bodyRef = document.querySelector('body');
-export const menuWrapRef = document.querySelectorAll('.menu-item-wrap');
-export const galleryPageRef = document.querySelector('.gallery-page');
-export const backdropRef = Array.from(document.querySelectorAll('.backdrop'));
-export const modalAuthRef = document.querySelector('[data-auth-modal]');
-export const modalNavRef = document.querySelector('[data-nav-modal]');
-export const modalImgRef = document.querySelector('.modal-image');
-export const modalImgWindowRef = document.querySelector('[data-img-modal]');
-export const modalUploadRef = document.querySelector('[data-upload-modal]');
-export const galleryMenuRef = document.querySelector('.gallery-menu');
-export const nightModeSwitch = document.querySelector('.nightMode-checkbox');
+const bodyRef = document.querySelector('body');
+const menuWrapRef = document.querySelectorAll('.menu-item-wrap');
+const galleryPageRef = document.querySelector('.gallery-page');
+const backdropRef = Array.from(document.querySelectorAll('.backdrop'));
+const modalAuthRef = document.querySelector('[data-auth-modal]');
+const modalNavRef = document.querySelector('[data-nav-modal]');
+const modalImgRef = document.querySelector('.modal-image');
+const modalImgWindowRef = document.querySelector('[data-img-modal]');
+const modalUploadRef = document.querySelector('[data-upload-modal]');
+const galleryMenuRef = document.querySelector('.gallery-menu');
+const nightModeSwitch = document.querySelector('.nightMode-checkbox');
+const intersectionAnchorGalleryRef = document.querySelector('.intersection-anchor')
 
+export {
+    bodyRef, menuWrapRef, galleryPageRef, backdropRef, modalAuthRef, modalNavRef,
+    modalImgRef, modalImgWindowRef, modalUploadRef, galleryMenuRef, nightModeSwitch,
+    intersectionAnchorGalleryRef
+}
