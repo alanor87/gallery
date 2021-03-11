@@ -277,7 +277,7 @@ function nightModeToggle() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = sideMenuItemOpen;
+exports.sideMenuItemOpen = sideMenuItemOpen;
 
 var _DOMRefs = require("./DOMRefs");
 
@@ -337,8 +337,6 @@ function uploadToggleHandler() {
 ;
 
 function imgToggleHandler(event) {
-  var target = event.target;
-
   if (event === 'close') {
     _DOMRefs.modalImgWindowRef.classList.toggle("modal-hidden");
 
@@ -347,6 +345,7 @@ function imgToggleHandler(event) {
   }
 
   ;
+  var target = event.target;
 
   if (target.classList.contains('gallery-page-img')) {
     _DOMRefs.modalImgRef.src = target.dataset.src;
@@ -452,13 +451,13 @@ function closeModal(event) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
-var _default = {
+exports.imgFetchOptions = void 0;
+var imgFetchOptions = {
   imgPerPage: 20,
   currentPage: 1,
   currentImgArray: []
 };
-exports.default = _default;
+exports.imgFetchOptions = imgFetchOptions;
 },{}],"js/modal-image-nav.js":[function(require,module,exports) {
 "use strict";
 
@@ -467,11 +466,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.modalImgTriggerHandler = modalImgTriggerHandler;
 
-var _globalVar = _interopRequireDefault(require("./globalVar"));
+var _globalVar = require("./globalVar");
 
 var _DOMRefs = require("./DOMRefs");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* -------------------------------------------*/
 
@@ -479,7 +476,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /* -------------------------------------------*/
 function modalImgTriggerHandler(event) {
-  console.log('click!');
   var direction = event.target.dataset.modalImgNav;
 
   switch (direction) {
@@ -496,10 +492,10 @@ function modalImgTriggerHandler(event) {
 function modalImageNav(indexShift) {
   var currentIndex = Number(_DOMRefs.modalImgRef.dataset.index);
   var nextIndex = currentIndex + indexShift;
-  var currentImgQuantity = _globalVar.default.currentImgArray.length;
+  var currentImgQuantity = _globalVar.imgFetchOptions.currentImgArray.length;
   if (nextIndex < 0 || nextIndex >= currentImgQuantity) return;
   console.log(nextIndex + ' ' + currentImgQuantity);
-  _DOMRefs.modalImgRef.src = "https://picsum.photos/id/".concat(_globalVar.default.currentImgArray[nextIndex].id, "/1000");
+  _DOMRefs.modalImgRef.src = "https://picsum.photos/id/".concat(_globalVar.imgFetchOptions.currentImgArray[nextIndex].id, "/1000");
   _DOMRefs.modalImgRef.dataset.index = nextIndex;
 }
 },{"./globalVar":"js/globalVar.js","./DOMRefs":"js/DOMRefs.js"}],"js/gallery-menu-toggle.js":[function(require,module,exports) {
@@ -508,7 +504,7 @@ function modalImageNav(indexShift) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = galleryMenuToggle;
+exports.galleryMenuToggle = galleryMenuToggle;
 
 var _DOMRefs = require("./DOMRefs");
 
@@ -520,19 +516,19 @@ var _DOMRefs = require("./DOMRefs");
 function galleryMenuToggle() {
   _DOMRefs.galleryMenuRef.classList.toggle('isOpen');
 }
+
+;
 },{"./DOMRefs":"js/DOMRefs.js"}],"js/gallery-render.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = galleryImgRender;
+exports.galleryImgRender = galleryImgRender;
 
 var _DOMRefs = require("./DOMRefs");
 
-var _globalVar = _interopRequireDefault(require("./globalVar"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _globalVar = require("./globalVar");
 
 /* ----------------------------*/
 
@@ -541,7 +537,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /* ----------------------------*/
 function galleryImgRender(imagesObjArray) {
   var imgRenderArray = imagesObjArray.map(function (el, index) {
-    var imgIndex = index + (_globalVar.default.currentPage - 1) * _globalVar.default.imgPerPage;
+    var imgIndex = index + (_globalVar.imgFetchOptions.currentPage - 1) * _globalVar.imgFetchOptions.imgPerPage;
     return "<div class=\"gallery-page-wrap\">\n          <div class=\"gallery-page-img-wrap\">\n              <img\n                class=\"gallery-page-img\"\n                src=\"https://picsum.photos/id/".concat(el.id, "/250\"\n                srcset=\"https://picsum.photos/id/").concat(el.id, "/250 1x, https://picsum.photos/id/").concat(el.id, "/500 2x\"\n                alt=\"image\"\n                data-src=\"https://picsum.photos/id/").concat(el.id, "/1000\"\n                data-index=\"").concat(imgIndex, "\"\n              />\n          </div>\n          <div class=\"gallery-page-text\">\n            <h2 class=\"gallery-page-header\">").concat(el.author, "</h2>\n            <p class=\"gallery-page-paragraph\">\n              Lorem ipsum dolor sit amet, consectetur adipisicing elit.</br> Index : ").concat(imgIndex, ".\n            </p>\n          </div>\n        </div>");
   });
 
@@ -557,11 +553,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.fetchImages = fetchImages;
 
-var _galleryRender = _interopRequireDefault(require("./gallery-render"));
+var _galleryRender = require("./gallery-render");
 
-var _globalVar = _interopRequireDefault(require("./globalVar"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _globalVar = require("./globalVar");
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -576,17 +570,17 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function fetchImages() {
-  return fetch("https://picsum.photos/v2/list?page=".concat(_globalVar.default.currentPage, "&limit=").concat(_globalVar.default.imgPerPage)).then(function (responce) {
+  return fetch("https://picsum.photos/v2/list?page=".concat(_globalVar.imgFetchOptions.currentPage, "&limit=").concat(_globalVar.imgFetchOptions.imgPerPage)).then(function (responce) {
     return responce.json();
   }).then(function (responce) {
     var _imgFetchOptions$curr;
 
-    (0, _galleryRender.default)(responce);
-    _globalVar.default.currentPage += 1;
+    (0, _galleryRender.galleryImgRender)(responce);
+    _globalVar.imgFetchOptions.currentPage += 1;
 
-    (_imgFetchOptions$curr = _globalVar.default.currentImgArray).push.apply(_imgFetchOptions$curr, _toConsumableArray(responce));
+    (_imgFetchOptions$curr = _globalVar.imgFetchOptions.currentImgArray).push.apply(_imgFetchOptions$curr, _toConsumableArray(responce));
 
-    console.log(_globalVar.default.currentImgArray);
+    console.log(_globalVar.imgFetchOptions.currentImgArray);
   });
 }
 },{"./gallery-render":"js/gallery-render.js","./globalVar":"js/globalVar.js"}],"js/intersection-observer.js":[function(require,module,exports) {
@@ -617,19 +611,17 @@ require("../sass/main.scss");
 
 var _nightModeToggle = require("./night-mode-toggle.js");
 
-var _sideMenuItemToggle = _interopRequireDefault(require("./side-menu-item-toggle"));
+var _sideMenuItemToggle = require("./side-menu-item-toggle");
 
 var _basicModalWindowsHandler = require("./basic-modal-windows-handler");
 
 var _modalImageNav = require("./modal-image-nav");
 
-var _galleryMenuToggle = _interopRequireDefault(require("./gallery-menu-toggle"));
+var _galleryMenuToggle = require("./gallery-menu-toggle");
 
 var _DOMRefs = require("./DOMRefs");
 
 var _intersectionObserver = require("./intersection-observer");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var modalOpenTriggersRef = Array.from(document.querySelectorAll("[data-mod-open-trigger]"));
 var modalCloseTriggersRef = Array.from(document.querySelectorAll("[data-mod-close-trigger]"));
@@ -640,8 +632,8 @@ window.addEventListener('DOMContentLoaded', _nightModeToggle.themeLoadHandler);
 
 _DOMRefs.nightModeSwitch.addEventListener('change', _nightModeToggle.nightModeToggle);
 
-sideMenuSwitch.addEventListener('change', _galleryMenuToggle.default);
-menuListItem.addEventListener('click', _sideMenuItemToggle.default);
+sideMenuSwitch.addEventListener('change', _galleryMenuToggle.galleryMenuToggle);
+menuListItem.addEventListener('click', _sideMenuItemToggle.sideMenuItemOpen);
 modalOpenTriggersRef.forEach(function (item) {
   return item.addEventListener("click", _basicModalWindowsHandler.openModal);
 });
@@ -681,7 +673,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50300" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51702" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
