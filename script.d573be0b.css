@@ -39,7 +39,20 @@ img {
 }
 
 button {
+  display: block;
+  background-color: var(--main-background-color);
+  border: 1px solid var(--color-border-main);
+  box-shadow: 3px 3px 5px 0px black;
+  font-size: 14px;
+  background-color: transparent;
+  padding: 6px 10px;
+  color: var(--main-text-color);
+  transition: color 250ms linear, border-color 250ms linear;
   cursor: pointer;
+}
+button:hover, button:focus {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 a {
@@ -79,8 +92,7 @@ svg {
 .section-header {
   display: flex;
   align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 10px;
   position: fixed;
   top: 0;
   bottom: initial;
@@ -105,22 +117,14 @@ svg {
 }
 
 .logo {
-  white-space: nowrap;
-  font-weight: 700;
-  font-size: 20px;
-}
-
-.nav-login-list {
   display: none;
 }
 @media screen and (min-width: 600px) {
-  .nav-login-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-    width: 80%;
+  .logo {
+    display: block;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 20px;
   }
 }
 
@@ -148,26 +152,42 @@ svg {
   opacity: 1;
 }
 
-.button-login-register {
-  display: block;
+.search-input {
   background-color: var(--main-background-color);
   border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
-  font-size: 14px;
-  background-color: transparent;
-  padding: 3px 10px;
+  width: 50%;
+  padding: 5px;
+  font-size: 24px;
   color: var(--main-text-color);
   transition: color 250ms linear, border-color 250ms linear;
 }
-.button-login-register:hover, .button-login-register:focus {
-  color: var(--color-accent);
+@media screen and (max-width: 600px) {
+  .search-input {
+    width: 100%;
+  }
+}
+.search-input:focus {
   border-color: var(--color-accent);
+  outline: none;
+}
+
+.button-upload,
+.button-login-register {
+  display: none;
+}
+@media screen and (min-width: 600px) {
+  .button-upload,
+.button-login-register {
+    display: block;
+  }
 }
 
 .header-menu-button {
   position: relative;
   display: block;
   border: none;
+  box-shadow: none;
   background-color: transparent;
   cursor: pointer;
 }
@@ -197,6 +217,10 @@ svg {
 .section-gallery {
   display: flex;
   height: calc(100vh - 45px);
+}
+
+.gallery-page-wrap {
+  overflow-y: scroll;
 }
 
 .gallery-menu {
@@ -302,7 +326,7 @@ svg {
     justify-content: flex-start;
   }
 }
-.gallery-page-wrap {
+.gallery-page-card-wrap {
   background-color: var(--main-background-color);
   border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
@@ -315,14 +339,16 @@ svg {
   overflow: hidden;
   cursor: pointer;
 }
-.gallery-page-wrap:hover .gallery-page-text {
+.gallery-page-card-wrap:hover .gallery-page-text {
   opacity: 1;
   transform: translateY(0);
 }
+.gallery-page-img-wrap {
+  height: 100%;
+}
 .gallery-page-img {
   width: 100%;
-  min-width: 250px;
-  height: auto;
+  height: 100%;
 }
 .gallery-page-text {
   position: absolute;
@@ -434,7 +460,8 @@ svg {
     flex-direction: column;
   }
 }
-.label-authorisation input {
+
+.label-authorisation-input {
   background-color: var(--main-background-color);
   border: 1px solid var(--color-border-main);
   box-shadow: 3px 3px 5px 0px black;
@@ -446,11 +473,11 @@ svg {
   transition: color 250ms linear, border-color 250ms linear;
 }
 @media screen and (max-width: 400px) {
-  .label-authorisation input {
+  .label-authorisation-input {
     margin-top: 10px;
   }
 }
-.label-authorisation input:focus {
+.label-authorisation-input:focus {
   border-color: var(--color-accent);
   outline: none;
 }
@@ -497,7 +524,8 @@ svg {
   color: #bebebe;
   font-size: 20px;
 }
-.modal-nav-list-item .button-login-register {
+
+.modal-button-login-register {
   padding: 10px 15px;
   font-size: 20px;
   color: #bebebe;
