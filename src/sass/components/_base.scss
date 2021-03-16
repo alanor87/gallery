@@ -12,7 +12,20 @@ body {
 img {
   display: block;
 }
-button {
+button {  
+  display: block;
+  @include border-shadow();
+  font-size: 14px;
+  background-color: transparent;
+  padding: 6px 10px;
+  color: $main-text-color;
+  transition: color 250ms linear, border-color 250ms linear;
+
+  &:hover,
+  &:focus {
+    color: $color-accent;
+    border-color: $color-accent;
+  }
   cursor: pointer;
 }
 a {

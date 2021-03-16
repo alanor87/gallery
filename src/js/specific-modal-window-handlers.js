@@ -3,23 +3,24 @@
 /* ----------------------------------------------------*/
 
 import { modalNavRef, modalAuthRef, modalUploadRef, modalImgWindowRef, modalImgRef } from "./DOMRefs";
+export { navToggleHandler, authToggleHandler, uploadToggleHandler, imgToggleHandler };
 
-export function navToggleHandler() {
+function navToggleHandler() {
     modalNavRef.classList.toggle("modal-hidden");
 };
-export function authToggleHandler() {
+function authToggleHandler() {
     modalAuthRef.classList.toggle("modal-hidden");
 };
-export function uploadToggleHandler() {
+function uploadToggleHandler() {
     modalUploadRef.classList.toggle("modal-hidden");
 };
-export function imgToggleHandler(event) {
-    const target = event.target;
+function imgToggleHandler(event) {
     if (event === 'close') {
         modalImgWindowRef.classList.toggle("modal-hidden");
         modalImgRef.src = '';
         return;
     };
+    const target = event.target;
     if (target.classList.contains('gallery-page-img')) {
         modalImgRef.src = target.dataset.src;
         modalImgRef.dataset.index = target.dataset.index;

@@ -2,20 +2,20 @@
 /*  NIGHT MODE TOGGLE FUNCTION */
 /* ----------------------------*/
 import { bodyRef, nightModeSwitch } from "./DOMRefs";
+export { themeLoadHandler, nightModeToggle };
 
-export function themeLoadHandler() {
+function themeLoadHandler() {
     switch (localStorage.getItem('theme')) {
         case 'light':
             bodyRef.classList.add('light-theme');
             nightModeSwitch.checked = true;
             break;
         case 'dark':
-            return; 
+            return;
+    }
 }
 
-}
-
-export function nightModeToggle() {
+function nightModeToggle() {
     if (bodyRef.classList.contains('light-theme')) {
         bodyRef.classList.remove('light-theme');
         localStorage.setItem('theme', 'dark');

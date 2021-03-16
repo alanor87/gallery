@@ -2,8 +2,7 @@
 .section-header {
   display: flex;
   align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 10px;
   @include header-footer(0, initial);
 }
 .nav {
@@ -16,26 +15,18 @@
   align-items: center;
 }
 .logo {
-  white-space: nowrap;
-  font-weight: 700;
-  font-size: 20px;
-}
-.nav-login-list {
   display: none;
   @media screen and (min-width: $breakpoint-mobile) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-    width: 80%;
+    display: block;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 20px;
   }
 }
-
 .nav-list-link {
   position: relative;
   display: block;
-  padding: 10px 0px;  
+  padding: 10px 0px;
   text-align: center;
   font-size: 16px;
   font-weight: 400;
@@ -58,25 +49,36 @@
     opacity: 1;
   }
 }
-.button-login-register {
-  display: block;
-  @include border-shadow();
-  font-size: 14px;
-  background-color: transparent;
-  padding: 3px 10px;
+
+.search-input {
+  @media screen and(max-width: $breakpoint-mobile) {
+    width: 100%;
+  }
+  @include border-shadow;
+  width: 50%;
+  padding: 5px;
+  font-size: 24px;
   color: $main-text-color;
   transition: color 250ms linear, border-color 250ms linear;
-
-  &:hover,
   &:focus {
-    color: $color-accent;
     border-color: $color-accent;
+    outline: none;
   }
 }
+
+.button-upload,
+.button-login-register {
+  display: none;
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: block;
+  }
+}
+
 .header-menu-button {
   position: relative;
   display: block;
   border: none;
+  box-shadow: none;
   @media screen and (min-width: $breakpoint-mobile) {
     display: none;
   }

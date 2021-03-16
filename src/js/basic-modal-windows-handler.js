@@ -4,8 +4,9 @@
 
 import { backdropRef } from "./DOMRefs";
 import { navToggleHandler, authToggleHandler, imgToggleHandler, uploadToggleHandler } from "./specific-modal-window-handlers";
+export { openModal, closeModal }
 
-export function openModal(event) {
+function openModal(event) {
     const role = event.currentTarget.dataset.modOpenTrigger;
     backdropRef.forEach(backdrop => backdrop.classList.add('modal-hidden'));
     switch (role) {
@@ -29,7 +30,7 @@ export function openModal(event) {
     }
 };
 
-export function closeModal(event) {
+function closeModal(event) {
     const role = event.currentTarget.dataset.modCloseTrigger;
     if (event.target !== event.currentTarget) return;
     switch (role) {

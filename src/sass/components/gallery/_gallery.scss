@@ -3,6 +3,9 @@
   display: flex;
   height: calc(100vh - 45px);
 }
+.gallery-page-wrap {
+  overflow-y: scroll;
+}
 
 @import "gallery-menu";
 @import "gallery-page";

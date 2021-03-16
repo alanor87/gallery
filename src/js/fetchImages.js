@@ -1,13 +1,15 @@
-import galleryImgRender from './gallery-render';
-import imgFetchOptions from './globalVar';
+import { galleryImgRender } from './gallery-render';
+import { imgFetchOptions } from './globalVar';
+export { fetchImages };
 
-export function fetchImages() {
-    return fetch(`https://picsum.photos/v2/list?page=${imgFetchOptions.currentPage}&limit=${imgFetchOptions.imgPerPage}`)
+function fetchImages() {
+    const { BASE_URL, API_KEY, query, currentPage, imgPerPage } = imgFetchOptions;
+    const requestURL = `${BASE_URL}?key=${API_KEY}&q=${query}&page=${currentPage}&per_page=${imgPerPage}`;
+    return fetch(requestURL)
         .then(responce => responce.json())
         .then(responce => {
-            galleryImgRender(responce);
+            galleryImgRender(responce.hits);
             imgFetchOptions.currentPage += 1;
-            imgFetchOptions.currentImgArray.push(...responce);
-            console.log(imgFetchOptions.currentImgArray);
+            imgFetchOptions.currentImgArray.push(...responce.hits);
         });
 }

@@ -4,5 +4,6 @@
 
 
 import { galleryMenuRef } from "./DOMRefs";
+export { galleryMenuToggle };
 
-export default function galleryMenuToggle() { galleryMenuRef.classList.toggle('isOpen') }
+function galleryMenuToggle() { galleryMenuRef.classList.toggle('isOpen') };
